@@ -1,0 +1,7 @@
+OLED模块参数：0.96寸，黄蓝双色，I2C接口
+
+模块引脚   开发板引脚
+VCC        3.3V/5V
+GND        地
+SCL        PB6 / I2C1_SCL
+SDA        PB7 / I2C1_SDA

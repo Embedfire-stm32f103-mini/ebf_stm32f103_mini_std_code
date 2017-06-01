@@ -1,0 +1,9 @@
+
+========================================================================
+
+** Object/Image Component Sizes
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+      1188         82        252          0       1024     228432   多彩流水灯.axf
+      1188         82        252          0          0          0   ROM Totals for 多彩流水灯.axf

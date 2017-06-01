@@ -8,7 +8,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:秉火 F103-IOT STM32 开发板 
+  * 实验平台:秉火 F103-MINI STM32 开发板 
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :https://fire-stm32.taobao.com
   *
@@ -41,35 +41,7 @@ int main(void)
 		LED2_ON;			 // 亮
 		SOFT_DELAY;
 		LED2_OFF;		   // 灭
-
-		LED3_ON;			 // 亮
-		SOFT_DELAY;
-		LED3_OFF;		   // 灭	 
-
-		/*轮流显示 红绿蓝黄紫青白 颜色*/
-		LED_RED;
-		SOFT_DELAY;
-		
-		LED_GREEN;
-		SOFT_DELAY;
-		
-		LED_BLUE;
-		SOFT_DELAY;
-		
-		LED_YELLOW;
-		SOFT_DELAY;
-		
-		LED_PURPLE;
-		SOFT_DELAY;
-				
-		LED_CYAN;
-		SOFT_DELAY;
-		
-		LED_WHITE;
-		SOFT_DELAY;
-		
-		LED_RGBOFF;
-		SOFT_DELAY;		
+	
 	}
 }
 

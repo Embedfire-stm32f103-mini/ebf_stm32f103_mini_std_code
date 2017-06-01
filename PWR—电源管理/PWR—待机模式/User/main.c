@@ -8,7 +8,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:秉火 F103-IOT STM32 开发板 
+  * 实验平台:秉火 F103-MINI STM32 开发板 
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :https://fire-stm32.taobao.com
   *
@@ -59,12 +59,12 @@ int main(void)
 	//检测复位来源
 	if(PWR_GetFlagStatus(PWR_FLAG_WU) == SET)
 	{
-		LED_BLUE;
+		LED2_ON;
 		printf("\r\n 待机唤醒复位 \r\n");
 	}
 	else
 	{
-		LED_GREEN;
+		LED1_ON;
 		printf("\r\n 非待机唤醒复位 \r\n");
 	}
 	
@@ -75,7 +75,7 @@ int main(void)
 		{
 			
 			printf("\r\n 即将进入待机模式，进入待机模式后可按KEY1唤醒，唤醒后会进行复位，程序从头开始执行\r\n");
-			LED_RED;	
+
 			Delay(0xFFFF);
 			
 			/*清除WU状态位*/

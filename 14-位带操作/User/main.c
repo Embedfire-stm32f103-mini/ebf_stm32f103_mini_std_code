@@ -86,12 +86,12 @@ int main(void)
 	
 	while( 1 )
 	{
-		// PB0 = 0,点亮LED
-		PBout(0)= 0;		
+		// PC2 = 0,点亮LED
+		PCout(2)= 0;		
 		SOFT_Delay(0x0FFFFF);
 		
-		// PB1 = 1,熄灭LED		
-		PBout(0)= 1;
+		// PC2 = 1,熄灭LED		
+		PCout(0)= 1;
 		SOFT_Delay(0x0FFFFF);		
 	}
 }
@@ -104,10 +104,10 @@ void LED_GPIO_Config(void)
 		GPIO_InitTypeDef GPIO_InitStructure;
 
 		// 开启GPIOB的时钟
-		RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOB, ENABLE); 
+		RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOC, ENABLE); 
 
 		// 选择要控制的IO口													   
-		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;	
+		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;	
 
 		// 设置引脚为推挽输出
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
@@ -115,11 +115,11 @@ void LED_GPIO_Config(void)
 		// 设置引脚速率为50MHz
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz; 
 
-		/*调用库函数，初始化GPIOB0*/
-		GPIO_Init(GPIOB, &GPIO_InitStructure);		  
+		/*调用库函数，初始化GPIOC2*/
+		GPIO_Init(GPIOC, &GPIO_InitStructure);		  
 
 		// 关闭LED
-		GPIO_SetBits(GPIOB, GPIO_Pin_0); 
+		GPIO_SetBits(GPIOC, GPIO_Pin_2); 
 }
 
 // 简陋的软件延时函数

@@ -9,7 +9,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:秉火 F103-IOT STM32 开发板 
+  * 实验平台:秉火 F103-MINI STM32 开发板 
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :https://fire-stm32.taobao.com
   *
@@ -62,7 +62,7 @@ int main(void)
 		/*********执行任务***************************/
 		printf("\r\n STM32正常运行，亮绿灯\r\n");
 	
-		LED_GREEN;	
+		LED1_ON;	
 		Delay(0x3FFFFF);
 		
 		/*****任务执行完毕，进入停止降低功耗***********/		
@@ -70,7 +70,7 @@ int main(void)
 		printf("\r\n 进入停止模式，按KEY1或KEY2按键可唤醒\r\n");
 
 		//使用红灯指示，进入停止状态
-		LED_RED;
+		LED2_ON;
 		
 		/* 进入停止模式，设置电压调节器为低功耗模式，等待中断唤醒 */
 		PWR_EnterSTOPMode(PWR_Regulator_LowPower,PWR_STOPEntry_WFI);	
@@ -113,7 +113,7 @@ int main(void)
 			clock_source_wakeup);
 		
 		/*指示灯*/
-		LED_BLUE;	
+		LED1_ON;	
 		Delay(0x1FFFFF);		
 			
 		printf("\r\n 已退出停止模式\r\n");

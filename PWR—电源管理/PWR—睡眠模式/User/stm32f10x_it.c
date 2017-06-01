@@ -151,7 +151,7 @@ void KEY1_IRQHandler(void)
   //确保是否产生了EXTI Line中断
 	if(EXTI_GetITStatus(KEY1_INT_EXTI_LINE) != RESET) 
 	{
-		LED_BLUE;		
+		LED1_ON;		
 		printf("\r\n KEY1 按键中断唤醒 \r\n");    
 		EXTI_ClearITPendingBit(KEY1_INT_EXTI_LINE);     
 	}  
@@ -162,7 +162,7 @@ void KEY2_IRQHandler(void)
   //确保是否产生了EXTI Line中断
 	if(EXTI_GetITStatus(KEY2_INT_EXTI_LINE) != RESET) 
 	{
-		LED_BLUE;
+		LED1_ON;
 		printf("\r\n KEY2 按键中断唤醒 \r\n");   
     //清除中断标志位
 		EXTI_ClearITPendingBit(KEY2_INT_EXTI_LINE);     

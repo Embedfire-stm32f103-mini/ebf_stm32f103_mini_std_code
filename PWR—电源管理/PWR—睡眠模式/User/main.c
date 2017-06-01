@@ -54,7 +54,7 @@ int main(void)
 		/*********执行任务***************************/
 		printf("\r\n STM32正常运行，亮绿灯\r\n");
 	
-		LED_GREEN;	
+		LED1_ON;	
 		Delay(0x3FFFFF);
 		
 		/*****任务执行完毕，进入睡眠降低功耗***********/
@@ -63,14 +63,14 @@ int main(void)
 		printf("\r\n 进入睡眠模式，按KEY1或KEY2按键可唤醒\r\n");
 
 		//使用红灯指示，进入睡眠状态
-		LED_RED;
+		LED2_ON;
 		//进入睡眠模式
 		__WFI();	//WFI指令进入睡眠
 		
 		//等待中断唤醒  K1或K2按键中断	
 		
 		/***被唤醒，亮蓝灯指示***/
-		LED_BLUE;	
+		LED1_ON;	
 		Delay(0x1FFFFF);		
 			
 		printf("\r\n 已退出睡眠模式\r\n");

@@ -148,7 +148,7 @@ void KEY1_IRQHandler(void)
   //确保是否产生了EXTI Line中断
 	if(EXTI_GetITStatus(KEY1_INT_EXTI_LINE) != RESET) 
 	{
-		LED_BLUE;
+		LED1_ON;
 		//由于停止唤醒后使用的是HSI时钟，与原来使用的HSE时钟时的频率不一致，会影响波特率，若此处直接printf会乱码	
 		//printf("\r\n KEY1 按键中断唤醒 \r\n");    
 		EXTI_ClearITPendingBit(KEY1_INT_EXTI_LINE);     
@@ -160,7 +160,7 @@ void KEY2_IRQHandler(void)
   //确保是否产生了EXTI Line中断
 	if(EXTI_GetITStatus(KEY2_INT_EXTI_LINE) != RESET) 
 	{
-		LED_BLUE;
+		LED1_ON;
 		//由于停止唤醒后使用的是HSI时钟，与原来使用的HSE时钟时的频率不一致，会影响波特率，若此处直接printf会乱码
 		//printf("\r\n KEY2 按键中断唤醒 \r\n");   
     //清除中断标志位

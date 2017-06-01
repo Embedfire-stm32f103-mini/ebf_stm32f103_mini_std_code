@@ -8,7 +8,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:秉火 F103-IOT STM32 开发板 
+  * 实验平台:秉火 F103-MINI STM32 开发板 
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :https://fire-stm32.taobao.com
   *
@@ -44,8 +44,8 @@ int main(void)
 {	
 		LED_GPIO_Config();	
 	
-	//亮绿灯，表示正常运行
-	LED_GREEN; 
+	//亮灯1，表示正常运行
+	LED1_ON; 
 	
 	//配置PVD，当电压过低时，会进入中断服务函数，亮红灯
 	PVD_Config();

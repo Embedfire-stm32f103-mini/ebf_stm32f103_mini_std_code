@@ -22,10 +22,10 @@ typedef struct
 
 /************************** DHT11 连接引脚定义********************************/
 #define      DHT11_Dout_SCK_APBxClock_FUN              RCC_APB2PeriphClockCmd
-#define      DHT11_Dout_GPIO_CLK                       RCC_APB2Periph_GPIOD
+#define      DHT11_Dout_GPIO_CLK                       RCC_APB2Periph_GPIOC
 
-#define      DHT11_Dout_GPIO_PORT                      GPIOD
-#define      DHT11_Dout_GPIO_PIN                       GPIO_Pin_6
+#define      DHT11_Dout_GPIO_PORT                      GPIOC
+#define      DHT11_Dout_GPIO_PIN                       GPIO_Pin_0
 
 
 

@@ -33,8 +33,8 @@
 #define	            macXPT2046_SPI_MOSI_PIN	                        GPIO_Pin_11
 #define	            macXPT2046_SPI_MOSI_PORT	                      GPIOF
 
-#define	            macXPT2046_SPI_MF103-指南者_PIN	                        GPIO_Pin_6
-#define	            macXPT2046_SPI_MF103-指南者_PORT	                      GPIOF
+#define	            macXPT2046_SPI_MF103-MINI_PIN	                        GPIO_Pin_6
+#define	            macXPT2046_SPI_MF103-MINI_PORT	                      GPIOF
 
 
 #define             macXPT2046_CS_ENABLE()                          GPIO_SetBits ( macXPT2046_SPI_CS_PORT, macXPT2046_SPI_CS_PIN )    
@@ -46,7 +46,7 @@
 #define             macXPT2046_MOSI_1()                             GPIO_SetBits ( macXPT2046_SPI_MOSI_PORT, macXPT2046_SPI_MOSI_PIN ) 
 #define             macXPT2046_MOSI_0()                             GPIO_ResetBits ( macXPT2046_SPI_MOSI_PORT, macXPT2046_SPI_MOSI_PIN )
 
-#define             macXPT2046_MF103-指南者()                               GPIO_ReadInputDataBit ( macXPT2046_SPI_MF103-指南者_PORT, macXPT2046_SPI_MF103-指南者_PIN )
+#define             macXPT2046_MF103-MINI()                               GPIO_ReadInputDataBit ( macXPT2046_SPI_MF103-MINI_PORT, macXPT2046_SPI_MF103-MINI_PIN )
 
 
 

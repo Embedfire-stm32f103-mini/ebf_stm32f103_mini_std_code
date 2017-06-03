@@ -8,7 +8,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:秉火 F103-指南者 STM32 开发板 
+  * 实验平台:秉火 F103-MINI STM32 开发板 
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :https://fire-stm32.taobao.com
   *
@@ -55,7 +55,6 @@ TestStatus Buffercmp(uint8_t* pBuffer1,uint8_t* pBuffer2, uint16_t BufferLength)
 int main(void)
 { 	
 	LED_GPIO_Config();
-	LED_BLUE;
 	
 	/* 配置串口为：115200 8-N-1 */
 	USART_Config();
@@ -96,18 +95,18 @@ int main(void)
 		
 		if( PASSED == TransferStatus1 )
 		{ 
-			LED_GREEN;
+			LED2_ON;
 			printf("\r\n 8M串行flash(W25Q64)测试成功!\n\r");
 		}
 		else
 		{        
-			LED_RED;
+			LED1_ON;
 			printf("\r\n 8M串行flash(W25Q64)测试失败!\n\r");
 		}
 	}// if (FlashID == sFLASH_ID)
 	else// if (FlashID == sFLASH_ID)
 	{ 
-		LED_RED;
+		LED1_ON;
 		printf("\r\n 获取不到 W25Q64 ID!\n\r");
 	}
 	

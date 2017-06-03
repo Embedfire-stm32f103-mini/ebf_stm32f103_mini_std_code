@@ -49,10 +49,7 @@ int main(void)
   uint8_t TransferStatus;
   
 	/* LED 端口初始化 */
-	LED_GPIO_Config();
-    
-  /* 设置RGB彩色灯为紫色 */
-  LED_PURPLE;  
+	LED_GPIO_Config();    
   
   /* 简单延时函数 */
   Delay(0xFFFFFF);  
@@ -72,13 +69,13 @@ int main(void)
   /* 判断源数据与传输后数据比较结果*/
   if(TransferStatus==0)  
   {
-    /* 源数据与传输后数据不相等时RGB彩色灯显示红色 */
-    LED_RED;
+    /* 源数据与传输后数据不相等时LED1亮 */
+    LED1_ON;
   }
   else
   { 
-    /* 源数据与传输后数据相等时RGB彩色灯显示蓝色 */
-    LED_BLUE;
+    /* 源数据与传输后数据相等时LED2亮 */
+    LED2_ON;
   }
 
 	while (1)

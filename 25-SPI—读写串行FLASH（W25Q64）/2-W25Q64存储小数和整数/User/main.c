@@ -8,7 +8,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:秉火 F103-指南者 STM32开发板 
+  * 实验平台:秉火 F103-MINI STM32开发板 
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :https://fire-stm32.taobao.com
   *
@@ -45,7 +45,6 @@ int main(void)
 	int int_bufffer[7] = {0};
 	
 	LED_GPIO_Config();
-	LED_BLUE;
 	
 	/* 配置串口1为：115200 8-N-1 */
 	USART_Config();
@@ -68,7 +67,7 @@ int main(void)
 	/* 检验 SPI Flash ID */
 	if (FlashID == sFLASH_ID) 
 	{	
-		LED_GREEN;
+		LED2_ON;
 		
 		printf("\r\n检测到SPI FLASH W25Q64 !\r\n");
 		
@@ -129,7 +128,7 @@ int main(void)
 	}// if (FlashID == sFLASH_ID)
 	else
 	{    
-		LED_RED;
+		LED1_ON;
 		printf("\r\n获取不到 W25Q64 ID!\n\r");
 	}
 	

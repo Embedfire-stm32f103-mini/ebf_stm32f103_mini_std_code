@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'F103-Ö¸ÄÏÕß-STM32' 
+ * Project: 'F103-MINI-STM32' 
  * Target:  'USB Mass Storage' 
  */
 

@@ -8,7 +8,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:秉火 F103-指南者 STM32 开发板 
+  * 实验平台:秉火 F103-MINI STM32 开发板 
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :https://fire-stm32.taobao.com
   *
@@ -47,11 +47,11 @@ int main(void)
 	printf("\r\n 这是一个EEPROM 读写小数和长整数实验 \r\n");
 
 	/* I2C 外设初(AT24C02)始化 */
-	I2C_EE_Init();	 	 
+	ee_CheckOk();	 	 
    
 
   		/*读取数据标志位*/
-    I2C_EE_BufferRead(&cal_flag, 0, 1);
+    ee_ReadBytes(&cal_flag, 0, 1);
   
     if( cal_flag != 0xCD )	/*若标志等于0xcd，表示之前已有写入数据*/
     {      
@@ -59,7 +59,7 @@ int main(void)
         cal_flag =0xCD;
         
         /*写入标志到0地址*/
-        I2C_EE_BufferWrite(&cal_flag, 0, 1); 
+        ee_WriteBytes(&cal_flag, 0, 1); 
         
         /*生成要写入的数据*/
         for( k=0; k<7; k++ )
@@ -69,9 +69,9 @@ int main(void)
         }
 
         /*写入小数数据到地址10*/
-        I2C_EE_BufferWrite((void*)double_buffer,DOUBLE_ADDR, sizeof(double_buffer));
+        ee_WriteBytes((void*)double_buffer,DOUBLE_ADDR, sizeof(double_buffer));
         /*写入整数数据到地址60*/
-        I2C_EE_BufferWrite((void*)int_bufffer, LONGINT_ADDR, sizeof(int_bufffer));
+        ee_WriteBytes((void*)int_bufffer, LONGINT_ADDR, sizeof(int_bufffer));
               
         printf("向芯片写入数据：");
         /*打印到串口*/
@@ -89,10 +89,10 @@ int main(void)
       	 printf("\r\n检测到数据标志\r\n");
 
 				/*读取小数数据*/
-        I2C_EE_BufferRead((void*)double_buffer, DOUBLE_ADDR, sizeof(double_buffer));
+        ee_ReadBytes((void*)double_buffer, DOUBLE_ADDR, sizeof(double_buffer));
 				
 				/*读取整数数据*/
-        I2C_EE_BufferRead((void*)int_bufffer, LONGINT_ADDR, sizeof(int_bufffer));
+        ee_ReadBytes((void*)int_bufffer, LONGINT_ADDR, sizeof(int_bufffer));
 	
 			
 				printf("\r\n从芯片读到数据：\r\n");			

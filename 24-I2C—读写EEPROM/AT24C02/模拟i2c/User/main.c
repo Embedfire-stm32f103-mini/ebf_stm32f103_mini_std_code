@@ -8,7 +8,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:秉火 F103-指南者 STM32 开发板 
+  * 实验平台:秉火 F103-MINI STM32 开发板 
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :https://fire-stm32.taobao.com
   *
@@ -30,8 +30,6 @@ int main(void)
   
     LED_GPIO_Config();
   
-    LED_BLUE;
-
     /* 串口初始化 */
 		USART_Config();
 
@@ -39,11 +37,11 @@ int main(void)
   
     if(ee_Test() == 1)
   	{
-			LED_GREEN;
+			LED2_ON;
     }
     else
     {
-        LED_RED;
+        LED1_ON;
     }
     while(1);
 }

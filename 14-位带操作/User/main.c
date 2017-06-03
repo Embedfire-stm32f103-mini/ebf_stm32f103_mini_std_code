@@ -91,7 +91,7 @@ int main(void)
 		SOFT_Delay(0x0FFFFF);
 		
 		// PC2 = 1,Ï¨ÃðLED		
-		PCout(0)= 1;
+		PCout(2)= 1;
 		SOFT_Delay(0x0FFFFF);		
 	}
 }

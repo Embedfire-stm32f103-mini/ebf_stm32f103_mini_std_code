@@ -4,7 +4,7 @@
 【*】程序简介
 
 -工程名称：W25Q64基本读写全程
--实验平台: 秉火STM32 F103-指南者 开发板 
+-实验平台: 秉火STM32 F103-MINI 开发板 
 -MDK版本：5.16
 -ST固件库版本：3.5
 
@@ -60,7 +60,7 @@ FLASH芯片的SPI接口与STM32的SPI3相连。
 		SCK	<--->PA5
 		MISO<--->PA6
 		MOSI<--->PA7
-		CS	<--->PC0
+		CS	<--->PA4
 
 串口(TTL-USB TO USART)：
 CH340的收发引脚与STM32的发收引脚相连。

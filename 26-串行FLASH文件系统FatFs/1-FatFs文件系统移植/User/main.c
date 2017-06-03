@@ -8,7 +8,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:秉火  STM32 F103-指南者 开发板 
+  * 实验平台:秉火  STM32 F103-MINI 开发板 
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :https://fire-stm32.taobao.com
   *
@@ -33,7 +33,6 @@ int main(void)
 {
 	/* 初始化LED */
 	LED_GPIO_Config();	
-	LED_BLUE;
 	
 	/* 初始化调试串口，一般为串口1 */
 	USART_Config();	
@@ -62,7 +61,7 @@ int main(void)
 		}
 		else
 		{
-			LED_RED;
+			LED1_ON;
 			printf("《《格式化失败。》》\r\n");
 			while(1);
 		}
@@ -101,7 +100,7 @@ int main(void)
 	}
 	else
 	{	
-		LED_RED;
+		LED1_ON;
 		printf("！！打开/创建文件失败。\r\n");
 	}
 	
@@ -110,7 +109,7 @@ int main(void)
 	res_flash = f_open(&fnew, "1:FatFs读写测试文件.txt",FA_OPEN_EXISTING | FA_READ); 	 
 	if(res_flash == FR_OK)
 	{
-		LED_GREEN;
+		LED2_ON;
 		printf("》打开文件成功。\r\n");
 		res_flash = f_read(&fnew, ReadBuffer, sizeof(ReadBuffer), &fnum); 
     if(res_flash==FR_OK)
@@ -125,7 +124,7 @@ int main(void)
 	}
 	else
 	{
-		LED_RED;
+		LED1_ON;
 		printf("！！打开文件失败。\r\n");
 	}
 	/* 不再读写，关闭文件 */

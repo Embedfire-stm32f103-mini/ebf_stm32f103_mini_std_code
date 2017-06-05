@@ -108,12 +108,7 @@ DRESULT disk_read (
 			}
 			
 			SD_state=SD_ReadMultiBlocks(buff,sector*SD_BLOCKSIZE,SD_BLOCKSIZE,count);
-		  if(SD_state==SD_RESPONSE_NO_ERROR)
-			{
-				/* Check if the Transfer is finished */
-//				SD_state=SD_WaitReadOperation();
-//				while(SD_GetStatus() != SD_TRANSFER_OK);
-			}
+
 			if(SD_state!=SD_RESPONSE_NO_ERROR)
 				status = RES_PARERR;
 		  else
@@ -170,14 +165,7 @@ DRESULT disk_write (
 			}		
 		
 			SD_state=SD_WriteMultiBlocks((uint8_t *)buff,sector*SD_BLOCKSIZE,SD_BLOCKSIZE,count);
-			if(SD_state==SD_RESPONSE_NO_ERROR)
-			{
-				/* Check if the Transfer is finished */
-//				SD_state=SD_WaitWriteOperation();
 
-//				/* Wait until end of DMA transfer */
-//				while(SD_GetStatus() != SD_TRANSFER_OK);			
-			}
 			if(SD_state!=SD_RESPONSE_NO_ERROR)
 				status = RES_PARERR;
 		  else

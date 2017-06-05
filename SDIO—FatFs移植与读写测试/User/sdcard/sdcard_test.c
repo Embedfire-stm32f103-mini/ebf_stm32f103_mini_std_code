@@ -4,7 +4,7 @@
   * @author  fire
   * @version V1.0
   * @date    2015-xx-xx
-  * @brief   SDIO sd卡测试驱动（不含文件系统）
+  * @brief   SPI sd卡测试驱动（不含文件系统）
   ******************************************************************************
   * @attention
   *
@@ -14,9 +14,9 @@
   *
   ******************************************************************************
   */
-#include "sdio/sdio_test.h"
+#include "./sdcard/sdcard_test.h"
 #include "./led/bsp_led.h"
-#include "./sdio/bsp_sdio_sdcard.h"
+#include "./sdcard/bsp_spi_sdcard.h"
 #include "./usart/bsp_usart.h"
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,15 +34,13 @@ typedef enum {FAILED = 0, PASSED = !FAILED} TestStatus;
 uint8_t Buffer_Block_Tx[BLOCK_SIZE], Buffer_Block_Rx[BLOCK_SIZE];
 uint8_t Buffer_MultiBlock_Tx[MULTI_BUFFER_SIZE], Buffer_MultiBlock_Rx[MULTI_BUFFER_SIZE];
 volatile TestStatus EraseStatus = FAILED, TransferStatus1 = FAILED, TransferStatus2 = FAILED;
-SD_Error Status = SD_OK;
+SD_Error Status = SD_RESPONSE_NO_ERROR;
 
 /* Private function prototypes -----------------------------------------------*/
-static void SD_EraseTest(void);
 static void SD_SingleBlockTest(void);
 void SD_MultiBlockTest(void);
 static void Fill_Buffer(uint8_t *pBuffer, uint32_t BufferLength, uint32_t Offset);
 static TestStatus Buffercmp(uint8_t* pBuffer1, uint8_t* pBuffer2, uint32_t BufferLength);
-static TestStatus eBuffercmp(uint8_t* pBuffer, uint32_t BufferLength);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -51,12 +49,12 @@ static TestStatus eBuffercmp(uint8_t* pBuffer, uint32_t BufferLength);
 void SD_Test(void)
 {
 
-	LED_BLUE;
+	LED2_ON;
   /*------------------------------ SD Init ---------------------------------- */
 	/* SD卡使用SDIO中断及DMA中断接收数据，中断服务程序位于bsp_sdio_sd.c文件尾*/
-  if((Status = SD_Init()) != SD_OK)
+  if((Status = SD_Init()) != SD_RESPONSE_NO_ERROR)
   {    
-		LED_RED;
+		LED1_ON;
     printf("SD卡初始化失败，请确保SD卡已正确接入开发板，或换一张SD卡测试！\n");
   }
   else
@@ -64,68 +62,20 @@ void SD_Test(void)
     printf("SD卡初始化成功！\n");		 
   }
         
-  if(Status == SD_OK) 
+  if(Status == SD_RESPONSE_NO_ERROR) 
   {
-		LED_BLUE;
-    /*擦除测试*/
-    SD_EraseTest();
     
-		LED_BLUE;
+		LED2_ON;
     /*single block 读写测试*/
     SD_SingleBlockTest();
     
-		//暂不支持直接多块读写，多块读写可用多个单块读写流程代替
-		LED_BLUE;
+		LED2_ON;
     /*muti block 读写测试*/
     SD_MultiBlockTest();
   }
  
 }
 
-
-/**
-  * @brief  Tests the SD card erase operation.
-  * @param  None
-  * @retval None
-  */
-void SD_EraseTest(void)
-{  
-  /*------------------- Block Erase ------------------------------------------*/
-  if (Status == SD_OK)
-  {
-    /* Erase NumberOfBlocks Blocks of WRITE_BL_LEN(512 Bytes) */
-    Status = SD_Erase(0x00, (BLOCK_SIZE * NUMBER_OF_BLOCKS));
-  }
-
-  if (Status == SD_OK)
-  {
-    Status = SD_ReadMultiBlocks(Buffer_MultiBlock_Rx, 0x00, BLOCK_SIZE, NUMBER_OF_BLOCKS);
-
-    /* Check if the Transfer is finished */
-    Status = SD_WaitReadOperation();
-
-    /* Wait until end of DMA transfer */
-    while(SD_GetStatus() != SD_TRANSFER_OK);
-  }
-
-  /* Check the correctness of erased blocks */
-  if (Status == SD_OK)
-  {
-    EraseStatus = eBuffercmp(Buffer_MultiBlock_Rx, MULTI_BUFFER_SIZE);
-  }
-  
-  if(EraseStatus == PASSED)
-  {    
-		LED_GREEN;
-    printf("SD卡擦除测试成功！\n");
-  }
-  else
-  {
-		LED_BLUE;
-    printf("SD卡擦除测试失败！\n");
-    printf("温馨提示：部分SD卡不支持擦除测试，若SD卡能通过下面的single读写测试，即表示SD卡能够正常使用。\n");
-  }
-}
 
 /**
   * @brief  Tests the SD card Single Blocks operations.
@@ -138,39 +88,35 @@ void SD_SingleBlockTest(void)
   /* Fill the buffer to send */
   Fill_Buffer(Buffer_Block_Tx, BLOCK_SIZE, 0x320F);
 
-  if (Status == SD_OK)
+  if (Status == SD_RESPONSE_NO_ERROR)
   {
     /* Write block of 512 bytes on address 0 */
     Status = SD_WriteBlock(Buffer_Block_Tx, 0x00, BLOCK_SIZE);
     /* Check if the Transfer is finished */
-    Status = SD_WaitWriteOperation();
-    while(SD_GetStatus() != SD_TRANSFER_OK);
   }
 
-  if (Status == SD_OK)
+  if (Status == SD_RESPONSE_NO_ERROR)
   {
     /* Read block of 512 bytes from address 0 */
     Status = SD_ReadBlock(Buffer_Block_Rx, 0x00, BLOCK_SIZE);
-    /* Check if the Transfer is finished */
-    Status = SD_WaitReadOperation();
-    while(SD_GetStatus() != SD_TRANSFER_OK);
+
   }
 
   /* Check the correctness of written data */
-  if (Status == SD_OK)
+  if (Status == SD_RESPONSE_NO_ERROR)
   {
     TransferStatus1 = Buffercmp(Buffer_Block_Tx, Buffer_Block_Rx, BLOCK_SIZE);
   }
   
   if(TransferStatus1 == PASSED)
   {
-    LED_GREEN;
+    LED2_ON;
     printf("Single block 测试成功！\n");
 
   }
   else
   {
-		LED_RED;
+		LED1_ON;
     printf("Single block 测试失败，请确保SD卡正确接入开发板，或换一张SD卡测试！\n");
     
   }
@@ -187,39 +133,35 @@ void SD_MultiBlockTest(void)
   /* Fill the buffer to send */
   Fill_Buffer(Buffer_MultiBlock_Tx, MULTI_BUFFER_SIZE, 0x0);
 
-  if (Status == SD_OK)
+  if (Status == SD_RESPONSE_NO_ERROR)
   {
     /* Write multiple block of many bytes on address 0 */
     Status = SD_WriteMultiBlocks(Buffer_MultiBlock_Tx, 0x00, BLOCK_SIZE, NUMBER_OF_BLOCKS);
     /* Check if the Transfer is finished */
-    Status = SD_WaitWriteOperation();
-    while(SD_GetStatus() != SD_TRANSFER_OK);
   }
 
-  if (Status == SD_OK)
+  if (Status == SD_RESPONSE_NO_ERROR)
   {
     /* Read block of many bytes from address 0 */
     Status = SD_ReadMultiBlocks(Buffer_MultiBlock_Rx, 0x00, BLOCK_SIZE, NUMBER_OF_BLOCKS);
     /* Check if the Transfer is finished */
-    Status = SD_WaitReadOperation();
-    while(SD_GetStatus() != SD_TRANSFER_OK);
   }
 
   /* Check the correctness of written data */
-  if (Status == SD_OK)
+  if (Status == SD_RESPONSE_NO_ERROR)
   {
     TransferStatus2 = Buffercmp(Buffer_MultiBlock_Tx, Buffer_MultiBlock_Rx, MULTI_BUFFER_SIZE);
   }
   
   if(TransferStatus2 == PASSED)
   {
-		LED_GREEN;
+		LED2_ON;
     printf("Multi block 测试成功！");
 
   }
   else
   {
-		LED_RED;
+		LED1_ON;
     printf("Multi block 测试失败，请确保SD卡正确接入开发板，或换一张SD卡测试！");
   }
 }
@@ -265,27 +207,6 @@ void Fill_Buffer(uint8_t *pBuffer, uint32_t BufferLength, uint32_t Offset)
   }
 }
 
-/**
-  * @brief  Checks if a buffer has all its values are equal to zero.
-  * @param  pBuffer: buffer to be compared.
-  * @param  BufferLength: buffer's length
-  * @retval PASSED: pBuffer values are zero
-  *         FAILED: At least one value from pBuffer buffer is different from zero.
-  */
-TestStatus eBuffercmp(uint8_t* pBuffer, uint32_t BufferLength)
-{
-  while (BufferLength--)
-  {
-    /* In some SD Cards the erased state is 0xFF, in others it's 0x00 */
-    if ((*pBuffer != 0xFF) && (*pBuffer != 0x00))
-    {
-      return FAILED;
-    }
 
-    pBuffer++;
-  }
-
-  return PASSED;
-}
 
 /*********************************************END OF FILE**********************/

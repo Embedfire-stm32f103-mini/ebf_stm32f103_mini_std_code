@@ -60,7 +60,7 @@ int main(void)
 	LED_GPIO_Config();
 	Key_GPIO_Config();
 
-	LED_BLUE;
+	LED2_ON;
 	
 	//芯片自动复位后，串口可能有小部分异常输出，如输出一个“？”号
 	printf("\r\n欢迎使用秉火  STM32  开发板。\r\n");	

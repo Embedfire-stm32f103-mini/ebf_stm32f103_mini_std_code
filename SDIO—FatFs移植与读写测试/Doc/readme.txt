@@ -3,7 +3,7 @@
 
 【*】程序简介
 
--工程名称：SDIO—FatFs移植与读写测试
+-工程名称：SDCARD—FatFs移植与读写测试
 -实验平台: 秉火STM32 MINI 开发板 
 -MDK版本：5.16
 -ST固件库版本：3.5
@@ -11,8 +11,7 @@
 【 ！】功能简介：
 使用文件系统对SD卡进行读写
 
-学习目的：学习STM32如何移植文件系统到SDIO
-
+学习目的：学习STM32如何移植文件系统到SPI SD卡
 
 
 【 ！】实验操作：
@@ -25,14 +24,13 @@
 
 【*】 引脚分配
 
-SDIO(microSD卡座，支持32G以内的SD卡)：
-microtSD卡座的SDIO接口与STM32的SDIO相连。
-		SDIO_D0	<--->PC8
-		SDIO_D1	<--->PC9
-		SDIO_D2	<--->PC10
-		SDIO_D3	<--->PC11
-		SDIO_CK	<--->PC12
-		SDIO_CMD<--->PD2
+(microSD卡座，支持32G以内的SD卡)：
+microtSD卡座的接口与STM32的SPI相连。
+
+		(CLK)SCK	<--->PA5
+		(DATA0)MISO	<--->PA6
+		(CMD)MOSI	<--->PA7
+		(DATA3)CS	<--->PA8
 
 串口(TTL-USB TO USART)：
 CH340的收发引脚与STM32的发收引脚相连。

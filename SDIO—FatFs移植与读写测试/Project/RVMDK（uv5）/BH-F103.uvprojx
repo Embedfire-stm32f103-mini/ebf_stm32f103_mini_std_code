@@ -593,9 +593,9 @@
               <FilePath>..\..\User\usart\bsp_usart.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_sdio_sdcard.c</FileName>
+              <FileName>bsp_spi_sdcard.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\User\sdio\bsp_sdio_sdcard.c</FilePath>
+              <FilePath>..\..\User\sdcard\bsp_spi_sdcard.c</FilePath>
             </File>
           </Files>
         </Group>

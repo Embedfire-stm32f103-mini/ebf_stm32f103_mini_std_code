@@ -23,7 +23,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-#include "./sdio/bsp_sdio_sdcard.h"	
 
 #include "usb_lib.h"
 #include "usb_istr.h"
@@ -159,18 +158,6 @@ void SysTick_Handler(void)
 /**
   * @}
   */ 
-/*
- * 函数名：SDIO_IRQHandler
- * 描述  ：在SDIO_ITConfig(）这个函数开启了sdio中断	，
- 			数据传输结束时产生中断
- * 输入  ：无		 
- * 输出  ：无
- */
-void SDIO_IRQHandler(void) 
-{
-  /* Process All SDIO Interrupt Sources */
-  SD_ProcessIRQSrc();
-}
 
 /*
  * 函数名：USB_LP_CAN1_RX0_IRQHandler

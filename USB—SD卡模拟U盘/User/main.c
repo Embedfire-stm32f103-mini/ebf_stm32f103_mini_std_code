@@ -16,7 +16,7 @@
   */
   
 #include "stm32f10x.h"
-#include "./sdio/bsp_sdio_sdcard.h"
+#include "./sdcard/bsp_spi_sdcard.h"
 #include "./usart/bsp_usart.h"
 #include "./led/bsp_led.h"  
 #include "hw_config.h" 

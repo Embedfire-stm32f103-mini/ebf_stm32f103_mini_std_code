@@ -29,7 +29,7 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "hw_config.h"
-#include "./sdio/bsp_sdio_sdcard.h"
+#include "./sdcard/bsp_spi_sdcard.h"
 #include "mass_mal.h"
 #include "usb_desc.h"
 #include "usb_pwr.h"
@@ -143,10 +143,10 @@ void USB_Interrupts_Config(void)
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
   
-  NVIC_InitStructure.NVIC_IRQChannel = SDIO_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-  NVIC_Init(&NVIC_InitStructure); 
+//  NVIC_InitStructure.NVIC_IRQChannel = SDIO_IRQn;
+//  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+//  NVIC_Init(&NVIC_InitStructure); 
 }
 
 

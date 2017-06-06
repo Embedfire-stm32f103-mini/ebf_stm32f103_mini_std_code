@@ -95,9 +95,9 @@ __inline void ILI9341_Write_Data ( uint16_t usData )
 __inline uint16_t ILI9341_Read_Data ( void )
 {
 	uint16_t data;
- 	GPIOB->CRL=0X88888888; //上拉输入
-	GPIOB->CRH=0X88888888; //上拉输入
-	GPIOB->ODR=0X0000;     //全部输出0
+ 	ILI9341_DATA_PORT->CRL=0X88888888; //上拉输入
+	ILI9341_DATA_PORT->CRH=0X88888888; //上拉输入
+	ILI9341_DATA_PORT->ODR=0X0000;     //全部输出0
 
 	ILI9341_DC_SET;
 	ILI9341_WR_SET;
@@ -110,9 +110,9 @@ __inline uint16_t ILI9341_Read_Data ( void )
 	ILI9341_RD_SET;
 	ILI9341_CS_SET; 
 
-	GPIOB->CRL=0X33333333; // 上拉输出
-	GPIOB->CRH=0X33333333; // 上拉输出
-	GPIOB->ODR=0XFFFF;    //全部输出高
+	ILI9341_DATA_PORT->CRL=0X33333333; // 上拉输出
+	ILI9341_DATA_PORT->CRH=0X33333333; // 上拉输出
+	ILI9341_DATA_PORT->ODR=0XFFFF;    //全部输出高
 	return data;  
 }
 

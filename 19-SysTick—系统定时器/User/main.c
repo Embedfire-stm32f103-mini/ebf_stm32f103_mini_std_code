@@ -48,8 +48,6 @@ int main(void)
 		LED2( ON );
 		SysTick_Delay_Ms( 1000 );
 		LED2( OFF );
-	
-
 	} 
 #endif	
 }

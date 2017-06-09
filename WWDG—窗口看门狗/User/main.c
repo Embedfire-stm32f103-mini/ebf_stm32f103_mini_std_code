@@ -4,6 +4,8 @@
 #include "bsp_key.h" 
 #include "bsp_wwdg.h" 
 
+static void Delay(__IO u32 nCount); 
+
 /**
   * @brief  主函数
   * @param  无
@@ -17,7 +19,7 @@ int main(void)
 	LED_GPIO_Config();
 
 	LED1(ON) ;
-	SOFT_Delay(0X00FFFFFF);	
+	Delay(0X8FFFFF);	
 	
 	// 初始化WWDG：配置计数器初始值，配置上窗口值，启动WWDG，使能提前唤醒中断
 	WWDG_Config(0X7F, 0X5F, WWDG_Prescaler_8);
@@ -48,6 +50,9 @@ int main(void)
 	}
 }
 
-
+static void Delay(__IO uint32_t nCount)	 //简单的延时函数
+{
+	for(; nCount != 0; nCount--);
+}
 
 /*********************************************END OF FILE**********************/

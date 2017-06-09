@@ -35,8 +35,6 @@ int main(void)
 	/* 发送一个字符串 */
 	Usart_SendString( DEBUG_USARTx,"这是一个串口中断接收回显实验\n");
 	printf("欢迎使用秉火STM32开发板\n\n\n\n");
-	
-
 
   while(1)
 	{	

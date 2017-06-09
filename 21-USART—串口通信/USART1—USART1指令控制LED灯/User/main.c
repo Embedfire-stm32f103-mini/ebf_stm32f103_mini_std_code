@@ -31,7 +31,7 @@ int main(void)
 {	
   char ch;
   
-  /* 初始化RGB彩灯 */
+  /* LED GPIO 初始化 */
   LED_GPIO_Config();
   
   /* 初始化USART 配置模式为 115200 8-N-1 */

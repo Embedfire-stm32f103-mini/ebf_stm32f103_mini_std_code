@@ -159,7 +159,8 @@ void PVD_IRQHandler(void)
 		if(PWR_GetFlagStatus (PWR_FLAG_PVDO)==SET)			
 		{
 			/* 亮红灯，实际应用中应进入紧急状态处理 */
-			LED2_ON; 
+			LED1_OFF;
+			LED2_ON;	
 			
 		}
     /* 清除中断信号*/

@@ -2,7 +2,7 @@
 【*】程序简介
 
 -工程名称：SCT文件应用
--实验平台: 秉火STM32 IOT 开发板 
+-实验平台: 秉火STM32 MINI 开发板 
 -MDK版本：5.16
 -ST固件库版本：3.5
 
@@ -29,7 +29,7 @@ LR_IROM1 0x08000000 0x00080000  {    ; load region size_region
    *(InRoot$$Sections)
    .ANY (+RO)
   }
-  RW_IRAM1 0x20000000 0x00002500  {  ; RW data
+  RW_IRAM1 0x20000000 0x00005000  {  ; RW data
   
   *.o(STACK)       					;选择STACK节区，栈
   stm32f10x_rcc.o(+RW)            	;选择stm32f10x_rcc的RW内容
@@ -37,7 +37,7 @@ LR_IROM1 0x08000000 0x00080000  {    ; load region size_region
    .ANY (+RW +ZI)
   }
   
-  RW_ERAM1 0x20002500 0x00002500 {  	; “指定的存储空间”
+  RW_ERAM1 0x20005000 0x00007000 {  	; “指定的存储空间”
    
     .ANY (+RW +ZI)                   ;其余的RW/ZI-data都分配到这里
    }

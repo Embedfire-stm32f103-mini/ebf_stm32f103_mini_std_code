@@ -52,25 +52,26 @@ int main(void)
 	
 	printf("\r\n 实验说明：\r\n");
 
-	printf("\r\n 1.本程序中，绿灯表示STM32正常运行，红灯表示停止状态，蓝灯表示刚从停止状态被唤醒\r\n");
-	printf("\r\n 2.在停止状态下，可使用KEY1或KEY2唤醒\r\n");
-	printf("\r\n 3.本实验执行这样一个循环：\r\n ------》亮绿灯(正常运行)->亮红灯(停止模式)->按KEY1或KEY2唤醒->亮蓝灯(刚被唤醒)-----》\r\n");
-	printf("\r\n 4.在停止状态下，DAP下载器无法给STM32下载程序，\r\n 可按KEY1、KEY2唤醒后下载，\r\n 或按复位键使芯片处于复位状态，然后在电脑上点击下载按钮，再释放复位按键，即可下载\r\n");
+	printf("\r\n 1.在停止状态下，可使用KEY1或KEY2唤醒\r\n");
+	printf("\r\n 2.本实验执行这样一个循环：\r\n ------》正常运行->停止模式->按KEY1或KEY2唤醒->刚被唤醒-----》\r\n");
+	printf("\r\n 3.在停止状态下，DAP下载器无法给STM32下载程序，\r\n 可按KEY1、KEY2唤醒后下载，\r\n 或按复位键使芯片处于复位状态，然后在电脑上点击下载按钮，再释放复位按键，即可下载\r\n");
 
   while(1)
   {	
 		/*********执行任务***************************/
 		printf("\r\n STM32正常运行，亮绿灯\r\n");
 	
-		LED1_ON;	
+		LED1_OFF;
+		LED2_ON;	
 		Delay(0x3FFFFF);
 		
 		/*****任务执行完毕，进入停止降低功耗***********/		
 		
 		printf("\r\n 进入停止模式，按KEY1或KEY2按键可唤醒\r\n");
 
-		//使用红灯指示，进入停止状态
-		LED2_ON;
+		//使用LED1指示，进入停止状态
+		LED2_OFF;
+		LED1_ON;
 		
 		/* 进入停止模式，设置电压调节器为低功耗模式，等待中断唤醒 */
 		PWR_EnterSTOPMode(PWR_Regulator_LowPower,PWR_STOPEntry_WFI);	
@@ -113,7 +114,8 @@ int main(void)
 			clock_source_wakeup);
 		
 		/*指示灯*/
-		LED1_ON;	
+		LED1_OFF;
+		LED2_ON;	
 		Delay(0x1FFFFF);		
 			
 		printf("\r\n 已退出停止模式\r\n");

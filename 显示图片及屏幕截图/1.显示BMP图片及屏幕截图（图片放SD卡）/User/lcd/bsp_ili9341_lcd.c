@@ -33,52 +33,12 @@ static sFONT *LCD_Currentfonts = &Font8x16;  //英文字体
 static uint16_t CurrentTextColor   = BLACK;//前景色
 static uint16_t CurrentBackColor   = WHITE;//背景色
 
-
 static void                   ILI9341_Delay               ( __IO uint32_t nCount );
 static void                   ILI9341_GPIO_Config         ( void );
-static void                   ILI9341_FSMC_Config         ( void );
 static void                   ILI9341_REG_Config          ( void );
 static void                   ILI9341_SetCursor           ( uint16_t usX, uint16_t usY );
 static __inline void          ILI9341_FillColor           ( uint32_t ulAmout_Point, uint16_t usColor );
 static uint16_t               ILI9341_Read_PixelData      ( void );
-
-
-
-
-/**
-  * @brief  向ILI9341写入命令
-  * @param  usCmd :要写入的命令（表寄存器地址）
-  * @retval 无
-  */	
-__inline void ILI9341_Write_Cmd ( uint16_t usCmd )
-{
-	* ( __IO uint16_t * ) ( FSMC_Addr_ILI9341_CMD ) = usCmd;
-	
-}
-
-
-/**
-  * @brief  向ILI9341写入数据
-  * @param  usData :要写入的数据
-  * @retval 无
-  */	
-__inline void ILI9341_Write_Data ( uint16_t usData )
-{
-	* ( __IO uint16_t * ) ( FSMC_Addr_ILI9341_DATA ) = usData;
-	
-}
-
-
-/**
-  * @brief  从ILI9341读取数据
-  * @param  无
-  * @retval 读取到的数据
-  */	
-__inline uint16_t ILI9341_Read_Data ( void )
-{
-	return ( * ( __IO uint16_t * ) ( FSMC_Addr_ILI9341_DATA ) );
-	
-}
 
 
 /**
@@ -92,6 +52,70 @@ static void ILI9341_Delay ( __IO uint32_t nCount )
 	
 }
 
+/**
+  * @brief  向ILI9341写入命令
+  * @param  usCmd :要写入的命令（表寄存器地址）
+  * @retval 无
+  */	
+__inline void ILI9341_Write_Cmd ( uint16_t usCmd )
+{
+	ILI9341_CS_CLR;//开始片选      
+	ILI9341_DC_CLR;//写命令
+	ILI9341_RD_SET;//禁止读
+	DATAOUT(usCmd);//输出命令
+	ILI9341_WR_CLR;//写入开始
+	ILI9341_WR_SET;//写入结束
+	ILI9341_CS_SET;//结束片选        	
+}
+
+
+/**
+  * @brief  向ILI9341写入数据
+  * @param  usData :要写入的数据
+  * @retval 无
+  */	
+__inline void ILI9341_Write_Data ( uint16_t usData )
+{
+	ILI9341_CS_CLR;//开始片选      
+	ILI9341_DC_SET;//写数据
+	ILI9341_RD_SET;//禁止读
+	DATAOUT(usData);//输出数据
+	ILI9341_WR_CLR;//写入开始
+	ILI9341_WR_SET;//写入结束
+	ILI9341_CS_SET;//结束片选   
+	
+}
+
+
+/**
+  * @brief  从ILI9341读取数据
+  * @param  无
+  * @retval 读取到的数据
+  */	
+__inline uint16_t ILI9341_Read_Data ( void )
+{
+	uint16_t data;
+ 	ILI9341_DATA_PORT->CRL=0X88888888; //上拉输入
+	ILI9341_DATA_PORT->CRH=0X88888888; //上拉输入
+	ILI9341_DATA_PORT->ODR=0X0000;     //全部输出0
+
+	ILI9341_DC_SET;
+	ILI9341_WR_SET;
+
+	ILI9341_CS_CLR;
+	//读取数据
+	ILI9341_RD_CLR;    
+    
+	data=DATAIN;  
+	ILI9341_RD_SET;
+	ILI9341_CS_SET; 
+
+	ILI9341_DATA_PORT->CRL=0X33333333; // 上拉输出
+	ILI9341_DATA_PORT->CRH=0X33333333; // 上拉输出
+	ILI9341_DATA_PORT->ODR=0XFFFF;    //全部输出高
+	return data;  
+}
+
 
 /**
   * @brief  初始化ILI9341的IO引脚
@@ -102,83 +126,36 @@ static void ILI9341_GPIO_Config ( void )
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 
+		/* 使能复用IO时钟*/
+	RCC_APB2PeriphClockCmd ( RCC_APB2Periph_AFIO, ENABLE );
+	
+	//复位引脚直接使用NRST，开发板复位的时候会使液晶复位
+
 	/* 使能FSMC对应相应管脚时钟*/
 	RCC_APB2PeriphClockCmd ( 	
 													/*控制信号*/
 													ILI9341_CS_CLK|ILI9341_DC_CLK|ILI9341_WR_CLK|
-													ILI9341_RD_CLK	|ILI9341_BK_CLK|ILI9341_RST_CLK|
+													ILI9341_RD_CLK	|ILI9341_BK_CLK|
 													/*数据信号*/
-													ILI9341_D0_CLK|ILI9341_D1_CLK|	ILI9341_D2_CLK | 
-													ILI9341_D3_CLK | ILI9341_D4_CLK|ILI9341_D5_CLK|
-													ILI9341_D6_CLK | ILI9341_D7_CLK|ILI9341_D8_CLK|
-													ILI9341_D9_CLK | ILI9341_D10_CLK|ILI9341_D11_CLK|
-													ILI9341_D12_CLK | ILI9341_D13_CLK|ILI9341_D14_CLK|
-													ILI9341_D15_CLK	, ENABLE );
+													ILI9341_DATA_CLK, ENABLE );
+	
+	//开启SWD，失能JTAG (部分PB引脚用在了jtag接口，改成SWD接口就不会有干扰)
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable , ENABLE);	
 		
 	
-	/* 配置FSMC相对应的数据线,FSMC-D0~D15 */	
+	/* 配置液晶相对应的数据线,PORT-D0~D15 */	
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode =  GPIO_Mode_AF_PP;
+	GPIO_InitStructure.GPIO_Mode =  GPIO_Mode_Out_PP;
 	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D0_PIN;
-	GPIO_Init ( ILI9341_D0_PORT, & GPIO_InitStructure );
-
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D1_PIN;
-	GPIO_Init ( ILI9341_D1_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D2_PIN;
-	GPIO_Init ( ILI9341_D2_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D3_PIN;
-	GPIO_Init ( ILI9341_D3_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D4_PIN;
-	GPIO_Init ( ILI9341_D4_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D5_PIN;
-	GPIO_Init ( ILI9341_D5_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D6_PIN;
-	GPIO_Init ( ILI9341_D6_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D7_PIN;
-	GPIO_Init ( ILI9341_D7_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D8_PIN;
-	GPIO_Init ( ILI9341_D8_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D9_PIN;
-	GPIO_Init ( ILI9341_D9_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D10_PIN;
-	GPIO_Init ( ILI9341_D10_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D11_PIN;
-	GPIO_Init ( ILI9341_D11_PORT, & GPIO_InitStructure );
-
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D12_PIN;
-	GPIO_Init ( ILI9341_D12_PORT, & GPIO_InitStructure );	
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D13_PIN;
-	GPIO_Init ( ILI9341_D13_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D14_PIN;
-	GPIO_Init ( ILI9341_D14_PORT, & GPIO_InitStructure );
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_D15_PIN;
-	GPIO_Init ( ILI9341_D15_PORT, & GPIO_InitStructure );
-	
-
-	
-	/* 配置FSMC相对应的控制线
-	 * FSMC_NOE   :LCD-RD
-	 * FSMC_NWE   :LCD-WR
-	 * FSMC_NE1   :LCD-CS
-	 * FSMC_A16  	:LCD-DC
+	GPIO_InitStructure.GPIO_Pin = ILI9341_DATA_PIN;
+	GPIO_Init ( ILI9341_DATA_PORT, &GPIO_InitStructure );	
+		
+	/* 配置液晶相对应的控制线
+	 * 读   			:LCD-RD
+	 * 写   			:LCD-WR
+	 * 片选   		:LCD-CS
+	 * 数据/命令 	:LCD-DC
 	 */
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode =  GPIO_Mode_AF_PP;
-	
 	GPIO_InitStructure.GPIO_Pin = ILI9341_RD_PIN; 
 	GPIO_Init (ILI9341_RD_PORT, & GPIO_InitStructure );
 	
@@ -190,79 +167,10 @@ static void ILI9341_GPIO_Config ( void )
 	
 	GPIO_InitStructure.GPIO_Pin = ILI9341_DC_PIN; 
 	GPIO_Init ( ILI9341_DC_PORT, & GPIO_InitStructure );
-	
-
-  /* 配置LCD复位RST控制管脚*/
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	
-	GPIO_InitStructure.GPIO_Pin = ILI9341_RST_PIN; 
-	GPIO_Init ( ILI9341_RST_PORT, & GPIO_InitStructure );
-	
-	
-	/* 配置LCD背光控制管脚BK*/
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
-	
+			
+	/* 配置LCD背光控制管脚BK*/	
 	GPIO_InitStructure.GPIO_Pin = ILI9341_BK_PIN; 
-	GPIO_Init ( ILI9341_BK_PORT, & GPIO_InitStructure );
-}
-
-
- /**
-  * @brief  LCD  FSMC 模式配置
-  * @param  无
-  * @retval 无
-  */
-static void ILI9341_FSMC_Config ( void )
-{
-	FSMC_NORSRAMInitTypeDef  FSMC_NORSRAMInitStructure;
-	FSMC_NORSRAMTimingInitTypeDef  readWriteTiming; 	
-	
-	/* 使能FSMC时钟*/
-	RCC_AHBPeriphClockCmd ( RCC_AHBPeriph_FSMC, ENABLE );
-
-	//地址建立时间（ADDSET）为1个HCLK 2/72M=28ns
-	readWriteTiming.FSMC_AddressSetupTime      = 0x01;	 //地址建立时间
-	//数据保持时间（DATAST）+ 1个HCLK = 5/72M=70ns	
-	readWriteTiming.FSMC_DataSetupTime         = 0x04;	 //数据建立时间
-	//选择控制的模式
-	//模式B,异步NOR FLASH模式，与ILI9341的8080时序匹配
-	readWriteTiming.FSMC_AccessMode            = FSMC_AccessMode_B;	
-	
-	/*以下配置与模式B无关*/
-	//地址保持时间（ADDHLD）模式A未用到
-	readWriteTiming.FSMC_AddressHoldTime       = 0x00;	 //地址保持时间
-	//设置总线转换周期，仅用于复用模式的NOR操作
-	readWriteTiming.FSMC_BusTurnAroundDuration = 0x00;
-	//设置时钟分频，仅用于同步类型的存储器
-	readWriteTiming.FSMC_CLKDivision           = 0x00;
-	//数据保持时间，仅用于同步型的NOR	
-	readWriteTiming.FSMC_DataLatency           = 0x00;	
-
-	
-	FSMC_NORSRAMInitStructure.FSMC_Bank                  = FSMC_Bank1_NORSRAMx;
-	FSMC_NORSRAMInitStructure.FSMC_DataAddressMux        = FSMC_DataAddressMux_Disable;
-	FSMC_NORSRAMInitStructure.FSMC_MemoryType            = FSMC_MemoryType_NOR;
-	FSMC_NORSRAMInitStructure.FSMC_MemoryDataWidth       = FSMC_MemoryDataWidth_16b;
-	FSMC_NORSRAMInitStructure.FSMC_BurstAccessMode       = FSMC_BurstAccessMode_Disable;
-	FSMC_NORSRAMInitStructure.FSMC_WaitSignalPolarity    = FSMC_WaitSignalPolarity_Low;
-	FSMC_NORSRAMInitStructure.FSMC_WrapMode              = FSMC_WrapMode_Disable;
-	FSMC_NORSRAMInitStructure.FSMC_WaitSignalActive      = FSMC_WaitSignalActive_BeforeWaitState;
-	FSMC_NORSRAMInitStructure.FSMC_WriteOperation        = FSMC_WriteOperation_Enable;
-	FSMC_NORSRAMInitStructure.FSMC_WaitSignal            = FSMC_WaitSignal_Disable;
-	FSMC_NORSRAMInitStructure.FSMC_ExtendedMode          = FSMC_ExtendedMode_Disable;
-	FSMC_NORSRAMInitStructure.FSMC_WriteBurst            = FSMC_WriteBurst_Disable;
-	FSMC_NORSRAMInitStructure.FSMC_ReadWriteTimingStruct = &readWriteTiming;
-	FSMC_NORSRAMInitStructure.FSMC_WriteTimingStruct     = &readWriteTiming;  
-	
-	FSMC_NORSRAMInit ( & FSMC_NORSRAMInitStructure ); 
-	
-	
-	/* 使能 FSMC_Bank1_NORSRAM4 */
-	FSMC_NORSRAMCmd ( FSMC_Bank1_NORSRAMx, ENABLE );  
-		
-		
+	GPIO_Init ( ILI9341_BK_PORT, &GPIO_InitStructure );
 }
 
 
@@ -272,7 +180,7 @@ static void ILI9341_FSMC_Config ( void )
  * @retval 无
  */
 static void ILI9341_REG_Config ( void )
-{
+{	
 	/*  Power control B (CFh)  */
 	DEBUG_DELAY  ();
 	ILI9341_Write_Cmd ( 0xCF  );
@@ -424,10 +332,23 @@ static void ILI9341_REG_Config ( void )
 	
 	/* Display ON (29h) */
 	ILI9341_Write_Cmd ( 0x29 ); 
-	
-	
+		
 }
 
+uint16_t ILI9341_Read_ID(void)
+{
+	uint16_t id = 0;
+	
+	ILI9341_Write_Cmd(0xD3);
+	ILI9341_Read_Data();
+	ILI9341_Read_Data();
+	id = ILI9341_Read_Data();
+	id<<=8;
+	id|=ILI9341_Read_Data();
+	
+	return id;
+	
+}
 
 /**
  * @brief  ILI9341初始化函数，如果要用到lcd，一定要调用这个函数
@@ -437,10 +358,9 @@ static void ILI9341_REG_Config ( void )
 void ILI9341_Init ( void )
 {
 	ILI9341_GPIO_Config ();
-	ILI9341_FSMC_Config ();
 	
 	ILI9341_BackLed_Control ( ENABLE );      //点亮LCD背光灯
-	ILI9341_Rst ();
+
 	ILI9341_REG_Config ();
 	
 	//设置默认扫描方向，其中 6 模式为大部分液晶例程的默认显示方向  
@@ -464,27 +384,6 @@ void ILI9341_BackLed_Control ( FunctionalState enumState )
 		GPIO_SetBits ( ILI9341_BK_PORT, ILI9341_BK_PIN );
 		
 }
-
-
-
-/**
- * @brief  ILI9341 软件复位
- * @param  无
- * @retval 无
- */
-void ILI9341_Rst ( void )
-{			
-	GPIO_ResetBits ( ILI9341_RST_PORT, ILI9341_RST_PIN );	 //低电平复位
-
-	ILI9341_Delay ( 0xAFF ); 					   
-
-	GPIO_SetBits ( ILI9341_RST_PORT, ILI9341_RST_PIN );		 	 
-
-	ILI9341_Delay ( 0xAFF ); 	
-	
-}
-
-
 
 
 /**

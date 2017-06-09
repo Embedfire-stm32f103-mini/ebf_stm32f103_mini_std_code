@@ -63,7 +63,7 @@ uint16_t MAL_Init(uint8_t lun)
 			FLASH_SPI_disk_initialize();
 			if(SPI_FLASH_ReadID()==sFLASH_ID)
 			{
-				//printf("flash init succsee\n");
+//				printf("flash init succsee\n");
 				Status = MAL_OK;
 			}
 			else

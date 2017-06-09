@@ -48,22 +48,23 @@ int main(void)
 	
 	printf("\r\n 实验说明：\r\n");
 
-	printf("\r\n 1.本程序中，绿灯表示本次复位是上电或引脚复位，红灯表示即将进入待机状态，蓝灯表示本次是待机唤醒的复位\r\n");
-	printf("\r\n 2.长按KEY2按键后，会进入待机模式\r\n");
-	printf("\r\n 3.在待机模式下，按KEY1按键可唤醒，唤醒后系统会进行复位，程序从头开始执行\r\n");
-	printf("\r\n 4.可通过检测WU标志位确定复位来源\r\n");
+	printf("\r\n 1.长按KEY2按键后，会进入待机模式\r\n");
+	printf("\r\n 2.在待机模式下，按KEY1按键可唤醒，唤醒后系统会进行复位，程序从头开始执行\r\n");
+	printf("\r\n 3.可通过检测WU标志位确定复位来源\r\n");
 	
-	printf("\r\n 5.在待机状态下，DAP下载器无法给STM32下载程序，需要唤醒后才能下载");
+	printf("\r\n 4.在待机状态下，DAP下载器无法给STM32下载程序，需要唤醒后才能下载");
 
 	
 	//检测复位来源
 	if(PWR_GetFlagStatus(PWR_FLAG_WU) == SET)
 	{
-		LED2_ON;
+		LED1_OFF;
+		LED2_ON;	
 		printf("\r\n 待机唤醒复位 \r\n");
 	}
 	else
 	{
+		LED2_OFF;
 		LED1_ON;
 		printf("\r\n 非待机唤醒复位 \r\n");
 	}

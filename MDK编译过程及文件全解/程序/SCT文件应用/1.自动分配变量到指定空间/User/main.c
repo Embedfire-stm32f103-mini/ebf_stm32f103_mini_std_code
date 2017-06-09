@@ -103,7 +103,7 @@ int main(void)
 		printf("\r\n使用malloc动态分配变量出错！！！\r\n");	
 	}
   
-  LED_BLUE; 
+  LED2_ON; 
 	
 
   while(1); 

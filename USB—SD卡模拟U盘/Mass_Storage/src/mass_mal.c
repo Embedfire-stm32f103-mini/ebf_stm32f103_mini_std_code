@@ -29,7 +29,7 @@
 /* Includes ------------------------------------------------------------------*/
 
 
-#include "./sdio/bsp_sdio_sdcard.h"
+#include "./sdcard/bsp_spi_sdcard.h"
 #include "mass_mal.h"
 
 /* Private typedef -----------------------------------------------------------*/
@@ -40,7 +40,7 @@ uint32_t Mass_Memory_Size[2];
 uint32_t Mass_Block_Size[2];
 uint32_t Mass_Block_Count[2];
 __IO uint32_t Status = 0;
-extern SD_CardInfo SDCardInfo;	  //用于存储卡的信息
+SD_CardInfo SDCardInfo;	  //用于存储卡的信息
 
 //SD_CardInfo mSDCardInfo;
 
@@ -85,9 +85,9 @@ uint16_t MAL_Write(uint8_t lun, uint32_t Memory_Offset, uint32_t *Writebuff, uin
     case 0:
    // Status = SD_WriteMultiBlocks((uint8_t*)Writebuff, Memory_Offset, Transfer_Length,1);
    Status =	SD_WriteBlock((uint8_t*)Writebuff, Memory_Offset, Transfer_Length);
-    Status = SD_WaitWriteOperation();  
-    while(SD_GetStatus() != SD_TRANSFER_OK);
-      if ( Status != SD_OK )
+//    Status = SD_WaitWriteOperation();  
+//    while(SD_GetStatus() != SD_TRANSFER_OK);
+      if ( Status != SD_RESPONSE_NO_ERROR )
       {
         return MAL_FAIL;
       }      
@@ -117,14 +117,14 @@ uint16_t MAL_Read(uint8_t lun, uint32_t Memory_Offset, uint32_t *Readbuff, uint1
 
      // SD_ReadMultiBlocks((uint8_t*)Readbuff, Memory_Offset, Transfer_Length, 1);
       SD_ReadBlock((uint8_t*)Readbuff, Memory_Offset, Transfer_Length);
-	  Status = SD_WaitReadOperation();
-      while(SD_GetStatus() != SD_TRANSFER_OK)
-      {
-      }
+//	  Status = SD_WaitReadOperation();
+//      while(SD_GetStatus() != SD_TRANSFER_OK)
+//      {
+//      }
 //    Status = SD_WaitWriteOperation();
 //    while(SD_GetStatus() != SD_TRANSFER_OK);
       
-      if ( Status != SD_OK )
+      if ( Status != SD_RESPONSE_NO_ERROR )
       {
         return MAL_FAIL;
       }
@@ -149,36 +149,22 @@ uint16_t MAL_Read(uint8_t lun, uint32_t Memory_Offset, uint32_t *Readbuff, uint1
 uint16_t MAL_GetStatus (uint8_t lun)
 {
 //  NAND_IDTypeDef NAND_ID;
-	uint32_t DeviceSizeMul = 0, NumberOfBlocks = 0;
-
 
   if (lun == 0)
   {
-    if (SD_Init() == SD_OK)
+    if (SD_Init() == SD_RESPONSE_NO_ERROR)
     {
       SD_GetCardInfo(&SDCardInfo);
-      SD_SelectDeselect((uint32_t) (SDCardInfo.RCA << 16));
-      DeviceSizeMul = (SDCardInfo.SD_csd.DeviceSizeMul + 2);
 
-      if(SDCardInfo.CardType == SDIO_HIGH_CAPACITY_SD_CARD)
-      {
-        Mass_Block_Count[0] = (SDCardInfo.SD_csd.DeviceSize + 1) * 1024;
-      }
-      else
-      {
-        NumberOfBlocks  = ((1 << (SDCardInfo.SD_csd.RdBlockLen)) / 512);
-        Mass_Block_Count[0] = ((SDCardInfo.SD_csd.DeviceSize + 1) * (1 << DeviceSizeMul) << (NumberOfBlocks/2));
-      }
-      Mass_Block_Size[0]  = 512;
-
-      Status = SD_SelectDeselect((uint32_t) (SDCardInfo.RCA << 16)); 
-      Status = SD_EnableWideBusOperation(SDIO_BusWide_4b); 
-      if ( Status != SD_OK )
+      if ( Status != SD_RESPONSE_NO_ERROR )
       {
         return MAL_FAIL;
       }	      
 
-      Mass_Memory_Size[0] = Mass_Block_Count[0] * Mass_Block_Size[0];
+			Mass_Memory_Size[0] = SDCardInfo.CardCapacity;
+			Mass_Block_Count[0] = SDCardInfo.CardCapacity/Mass_Block_Size[0];
+      Mass_Block_Size[0]  = 512;
+
       return MAL_OK;
 
     }

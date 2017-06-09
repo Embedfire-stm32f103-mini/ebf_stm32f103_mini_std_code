@@ -100,7 +100,7 @@ void LCD_Test(void)
 
   ILI9341_Clear(0,0,LCD_X_LENGTH,LCD_Y_LENGTH);	/* 清屏，显示全黑 */
 	/********显示字符串示例*******/
-  ILI9341_DispStringLine_EN(LINE(0),"BH 3.2 inch LCD para:");
+  ILI9341_DispStringLine_EN(LINE(0),"BH 3.2_2.8 inch LCD para:");
   ILI9341_DispStringLine_EN(LINE(1),"Image resolution:240x320 px");
   ILI9341_DispStringLine_EN(LINE(2),"ILI9341 LCD driver");
   ILI9341_DispStringLine_EN(LINE(3),"XPT2046 Touch Pad driver");

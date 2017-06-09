@@ -7,7 +7,7 @@
 #include <string.h>
 #include "diskio.h"
 #include "stm32f10x.h"
-#include "./sdio/bsp_sdio_sdcard.h"
+#include "./sdcard/bsp_spi_sdcard.h"
 
 /* 为每个设备定义一个物理编号 */
 #define ATA			           0     // SD卡
@@ -15,7 +15,7 @@
 
 #define SD_BLOCKSIZE     512 
 
-extern  SD_CardInfo SDCardInfo;
+SD_CardInfo SDCardInfo;
 
 /*-----------------------------------------------------------------------*/
 /* 获取设备状态                                                          */
@@ -50,8 +50,10 @@ DSTATUS disk_initialize (
 	DSTATUS status = STA_NOINIT;	
 	switch (pdrv) {
 		case ATA:	         /* SD CARD */
-			if(SD_Init()==SD_OK)
+			if(SD_Init()==SD_RESPONSE_NO_ERROR)
 			{
+				
+				SD_GetCardInfo(&SDCardInfo);
 				status &= ~STA_NOINIT;
 			}
 			else 
@@ -82,7 +84,7 @@ DRESULT disk_read (
 )
 {
 	DRESULT status = RES_PARERR;
-	SD_Error SD_state = SD_OK;
+	SD_Error SD_state = SD_RESPONSE_NO_ERROR;
 	
 	switch (pdrv) {
 		case ATA:	/* SD CARD */						
@@ -106,13 +108,8 @@ DRESULT disk_read (
 			}
 			
 			SD_state=SD_ReadMultiBlocks(buff,sector*SD_BLOCKSIZE,SD_BLOCKSIZE,count);
-		  if(SD_state==SD_OK)
-			{
-				/* Check if the Transfer is finished */
-				SD_state=SD_WaitReadOperation();
-				while(SD_GetStatus() != SD_TRANSFER_OK);
-			}
-			if(SD_state!=SD_OK)
+
+			if(SD_state!=SD_RESPONSE_NO_ERROR)
 				status = RES_PARERR;
 		  else
 			  status = RES_OK;	
@@ -141,7 +138,7 @@ DRESULT disk_write (
 )
 {
 	DRESULT status = RES_PARERR;
-	SD_Error SD_state = SD_OK;
+	SD_Error SD_state = SD_RESPONSE_NO_ERROR;
 	
 	if (!count) {
 		return RES_PARERR;		/* Check parameter */
@@ -168,15 +165,8 @@ DRESULT disk_write (
 			}		
 		
 			SD_state=SD_WriteMultiBlocks((uint8_t *)buff,sector*SD_BLOCKSIZE,SD_BLOCKSIZE,count);
-			if(SD_state==SD_OK)
-			{
-				/* Check if the Transfer is finished */
-				SD_state=SD_WaitWriteOperation();
 
-				/* Wait until end of DMA transfer */
-				while(SD_GetStatus() != SD_TRANSFER_OK);			
-			}
-			if(SD_state!=SD_OK)
+			if(SD_state!=SD_RESPONSE_NO_ERROR)
 				status = RES_PARERR;
 		  else
 			  status = RES_OK;	

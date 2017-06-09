@@ -4,7 +4,7 @@
   * @author  fire
   * @version V1.0
   * @date    2013-xx-xx
-  * @brief   SDIO sd卡测试实验（不含文件系统）
+  * @brief   SPI sd卡测试实验（不含文件系统）
   ******************************************************************************
   * @attention
   *
@@ -15,8 +15,8 @@
   ******************************************************************************
   */
 #include "stm32f10x.h"
-#include "./sdio/bsp_sdio_sdcard.h"
-#include "./sdio/sdio_test.h"
+#include "./sdcard/bsp_spi_sdcard.h"
+#include "./sdcard/sdcard_test.h"
 #include "./usart/bsp_usart.h"	
 #include "./led/bsp_led.h"
 #include "./key/bsp_key.h" 
@@ -31,7 +31,7 @@ int main(void)
 {									   
 	/* 初始化LED灯 */
   LED_GPIO_Config();
-	LED_BLUE;	
+
 	/* 初始化独立按键 */
 	Key_GPIO_Config();
   

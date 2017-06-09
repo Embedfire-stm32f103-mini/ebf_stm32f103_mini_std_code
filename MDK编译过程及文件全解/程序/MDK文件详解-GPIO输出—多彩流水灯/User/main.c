@@ -42,34 +42,6 @@ int main(void)
 		SOFT_DELAY;
 		LED2_OFF;		   // Ãð
 
-		LED3_ON;			 // ÁÁ
-		SOFT_DELAY;
-		LED3_OFF;		   // Ãð	 
-
-		/*ÂÖÁ÷ÏÔÊ¾ ºìÂÌÀ¶»Æ×ÏÇà°× ÑÕÉ«*/
-		LED_RED;
-		SOFT_DELAY;
-		
-		LED_GREEN;
-		SOFT_DELAY;
-		
-		LED_BLUE;
-		SOFT_DELAY;
-		
-		LED_YELLOW;
-		SOFT_DELAY;
-		
-		LED_PURPLE;
-		SOFT_DELAY;
-				
-		LED_CYAN;
-		SOFT_DELAY;
-		
-		LED_WHITE;
-		SOFT_DELAY;
-		
-		LED_RGBOFF;
-		SOFT_DELAY;		
 	}
 }
 

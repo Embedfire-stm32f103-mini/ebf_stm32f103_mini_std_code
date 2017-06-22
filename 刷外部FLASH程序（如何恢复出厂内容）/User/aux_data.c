@@ -41,19 +41,19 @@ Aux_Data_Typedef  burn_data[] =
 {
   [AUX_XBF_XINSONGTI] =
   {
-    .filename           =   "0:/srcdata/songti.xbf",
-    .description        =   "XBF字库文件（emWin使用,新宋体.xbf）",
-    .start_addr         =   60*4096 ,
-    .length             =   317*4096, 
+    .filename           =   "0:/srcdata/新宋体16.xbf",
+    .description        =   "XBF字库文件（emWin使用,新宋体16.xbf）",
+    .start_addr         =   1*4096 ,
+    .length             =   399*4096, 
     .burn_option      =  UPDATE,
   },
   
-  [AUX_HZLIB] =
+  [AUX_PYTAB] =
   {
-    .filename           =   "0:/srcdata/HZLIB.bin",
-    .description        =   "裸机中文字库（旧版，为兼容而保留）",
-    .start_addr         =   1*4096 ,
-    .length             =   53*4096, 
+    .filename           =   "0:/srcdata/拼音候选表.txt",
+    .description        =   "拼音候选表（emwin键盘拼音输入时使用）",
+    .start_addr         =   400*4096 ,
+    .length             =   6*4096, 
     .burn_option      =  UPDATE,
   },
 	
@@ -61,7 +61,7 @@ Aux_Data_Typedef  burn_data[] =
   {
     .filename           =   "0:/srcdata/GB2312_H1616.FON",
     .description        =   "GB2312字库（修复HZLIB不支持标点的问题）",
-    .start_addr         =   387*4096 ,
+    .start_addr         =   406*4096 ,
     .length             =   64*4096, 
     .burn_option      =  UPDATE,
   },
@@ -70,16 +70,25 @@ Aux_Data_Typedef  burn_data[] =
   {
     .filename           =   "0:/srcdata/UNIGBK.BIN",
     .description        =   "文件系统中文支持字库(emWin使用,UNIGBK.BIN)",
-    .start_addr         =   465*4096 ,
+    .start_addr         =   470*4096 ,
     .length             =   43*4096,
     .burn_option      =  UPDATE,      
-  },      
+  },   
+
+  [AUX_TOUCH] =
+  {
+    .filename           =   "0:/srcdata/触摸校准默认数据.BIN",
+    .description        =   "触摸校准默认数据",
+    .start_addr         =   513*4096 ,
+    .length             =   1*4096,
+    .burn_option       =  UPDATE,      
+  },      	
   
   [AUX_FILE_SYSTEM] =
   {
     .filename           =   "",
     .description        =   "FATFS文件系统",
-    .start_addr         =   512*4096 ,
+    .start_addr         =   514*4096 ,
     .length             =   1536*4096, 
     .burn_option      =  DO_NOT_UPDATE,
   }

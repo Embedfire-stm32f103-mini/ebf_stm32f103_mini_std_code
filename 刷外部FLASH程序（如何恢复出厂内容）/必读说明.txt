@@ -57,7 +57,7 @@
 【*】 引脚分配
 
 FLASH(W25Q64)：
-FLASH芯片的SPI接口与STM32的SPI3相连。
+FLASH芯片的SPI接口与STM32的SPI1相连。
 		SCK	<--->PA5
 		MISO<--->PA6
 		MOSI<--->PA7

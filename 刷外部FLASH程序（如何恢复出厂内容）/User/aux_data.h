@@ -31,9 +31,10 @@ typedef enum
     AUX_DATA_ERROR = -1,
   
     AUX_XBF_XINSONGTI, 
-    AUX_HZLIB, 
+    AUX_PYTAB, 
 		AUX_GB2312,
     AUX_UNIGBK, 
+	  AUX_TOUCH, 
     AUX_FILE_SYSTEM,      //FLASH文件系统
   
     AUX_MAX_NUM,

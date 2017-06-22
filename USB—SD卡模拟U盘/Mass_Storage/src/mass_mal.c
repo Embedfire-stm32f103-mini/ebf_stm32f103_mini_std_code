@@ -161,9 +161,10 @@ uint16_t MAL_GetStatus (uint8_t lun)
         return MAL_FAIL;
       }	      
 
-			Mass_Memory_Size[0] = SDCardInfo.CardCapacity;
+			Mass_Memory_Size[0] = SDCardInfo.CardCapacity;  
+			Mass_Block_Size[0]  = SDCardInfo.CardBlockSize;
+
 			Mass_Block_Count[0] = SDCardInfo.CardCapacity/Mass_Block_Size[0];
-      Mass_Block_Size[0]  = 512;
 
       return MAL_OK;
 

@@ -16,7 +16,7 @@
   */ 
   
 #include "stm32f10x.h"
-#include "./flash/fatfs_flash_spi.h"
+#include "./flash/bsp_spi_flash.h"
 #include "./usart/bsp_usart.h"	
 #include "./led/bsp_led.h"  
 #include "hw_config.h" 

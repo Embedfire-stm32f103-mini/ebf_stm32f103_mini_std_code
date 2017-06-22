@@ -177,26 +177,8 @@ void USB_Cable_Config (FunctionalState NewState)
   {
     GPIO_SetBits(GPIOC, GPIO_Pin_1);	//断开USB
   }
-	
-	#else
-	 	GPIO_InitTypeDef GPIO_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+#endif	
 
-  /* PD3 输出 0 时 D+ 接上拉电阻工作于全速模式 */ 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;	   /* 开漏输出 */
-  GPIO_Init(GPIOC, &GPIO_InitStructure);
-  
-  if (NewState!=DISABLE)
-  {    GPIO_SetBits(GPIOC, GPIO_Pin_1);	//断开USB
-
-  }
-  else
-  {    GPIO_ResetBits(GPIOC, GPIO_Pin_1);	   //连接USB ,开发板上的USB_EN接的是PD3
-
-  }
-	#endif
 }
 
 /*******************************************************************************

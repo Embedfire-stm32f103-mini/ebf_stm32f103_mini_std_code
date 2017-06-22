@@ -160,7 +160,7 @@ void USB_Interrupts_Config(void)
 *******************************************************************************/
 void USB_Cable_Config (FunctionalState NewState)
 {
-
+#if 0
  	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
 
@@ -178,6 +178,7 @@ void USB_Cable_Config (FunctionalState NewState)
   {
     GPIO_SetBits(GPIOD, GPIO_Pin_6);	//¶Ï¿ªUSB
   }
+#endif
 }
 
 /*******************************************************************************

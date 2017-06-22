@@ -43,7 +43,7 @@ extern sFONT Font8x16;
 	/*使用FLASH字模*/
 	/*中文字库存储在FLASH的起始地址*/
 	/*FLASH*/
-	#define GBKCODE_START_ADDRESS   387*4096
+	#define GBKCODE_START_ADDRESS   406*4096
 
 
 	/*获取字库的函数*/

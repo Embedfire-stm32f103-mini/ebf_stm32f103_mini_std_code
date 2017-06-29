@@ -45,7 +45,7 @@ int main(void)
 	/*设置USB时钟为48M*/
 	Set_USBClock();
  	
-	/*配置USB中断(包括SDIO中断)*/
+	/*配置USB中断*/
 	USB_Interrupts_Config();
  
 	/*USB初始化*/

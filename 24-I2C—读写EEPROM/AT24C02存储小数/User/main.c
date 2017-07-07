@@ -47,7 +47,7 @@ int main(void)
 	printf("\r\n 这是一个EEPROM 读写小数和长整数实验 \r\n");
 
 	/* I2C 外设初(AT24C02)始化 */
-	ee_CheckOk();	 	 
+		i2c_CfgGpio();
    
 
   		/*读取数据标志位*/

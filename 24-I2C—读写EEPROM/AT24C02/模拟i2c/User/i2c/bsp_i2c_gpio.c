@@ -23,7 +23,6 @@
 #include "stm32f10x.h"
 
 
-static void i2c_CfgGpio(void);
 
 
 /*
@@ -226,7 +225,7 @@ void i2c_NAck(void)
 *	返 回 值: 无
 *********************************************************************************************************
 */
-static void i2c_CfgGpio(void)
+void i2c_CfgGpio(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 
@@ -241,28 +240,4 @@ static void i2c_CfgGpio(void)
 	i2c_Stop();
 }
 
-/*
-*********************************************************************************************************
-*	函 数 名: i2c_CheckDevice
-*	功能说明: 检测I2C总线设备，CPU向发送设备地址，然后读取设备应答来判断该设备是否存在
-*	形    参：_Address：设备的I2C总线地址
-*	返 回 值: 返回值 0 表示正确， 返回1表示未探测到
-*********************************************************************************************************
-*/
-uint8_t i2c_CheckDevice(uint8_t _Address)
-{
-	uint8_t ucAck;
 
-	i2c_CfgGpio();		/* 配置GPIO */
-
-	
-	i2c_Start();		/* 发送启动信号 */
-
-	/* 发送设备地址+读写控制bit（0 = w， 1 = r) bit7 先传 */
-	i2c_SendByte(_Address | EEPROM_I2C_WR);
-	ucAck = i2c_WaitAck();	/* 检测设备的ACK应答 */
-
-	i2c_Stop();			/* 发送停止信号 */
-
-	return ucAck;
-}

@@ -36,7 +36,7 @@
 	#define EEPROM_I2C_SDA_READ()  ((EEPROM_GPIO_PORT_I2C->IDR & EEPROM_I2C_SDA_PIN) != 0)	/* ¶ÁSDA¿ÚÏß×´Ì¬ */
 #endif
 
-
+void i2c_CfgGpio(void);
 void i2c_Start(void);
 void i2c_Stop(void);
 void i2c_SendByte(uint8_t _ucByte);
@@ -44,7 +44,6 @@ uint8_t i2c_ReadByte(void);
 uint8_t i2c_WaitAck(void);
 void i2c_Ack(void);
 void i2c_NAck(void);
-uint8_t i2c_CheckDevice(uint8_t _Address);
 
 
 #endif

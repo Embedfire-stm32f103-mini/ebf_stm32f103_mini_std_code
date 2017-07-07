@@ -32,6 +32,8 @@ int main(void)
   
     /* 串口初始化 */
 		USART_Config();
+	
+		i2c_CfgGpio();
 
 		printf("eeprom 软件模拟i2c测试例程 \r\n");		
   

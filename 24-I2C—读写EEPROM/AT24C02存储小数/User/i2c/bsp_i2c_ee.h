@@ -3,6 +3,7 @@
 
 
 #include "stm32f10x.h"
+#include "bsp_i2c_gpio.h"
 
 
 /* 
@@ -25,11 +26,13 @@
 #define EEPROM_SIZE				  256			  /* 24xx02×ÜÈÝÁ¿ */
 
 
-uint8_t ee_CheckOk(void);
+
 uint8_t ee_ReadBytes(uint8_t *_pReadBuf, uint16_t _usAddress, uint16_t _usSize);
 uint8_t ee_WriteBytes(uint8_t *_pWriteBuf, uint16_t _usAddress, uint16_t _usSize);
+uint8_t ee_CheckDevice(uint8_t _Address);
 void ee_Erase(void);
-uint8_t ee_Test(void);
+uint8_t ee_WaitStandby(void);
+uint8_t ee_Test(void) ;
 
 
 #endif /* __I2C_EE_H */

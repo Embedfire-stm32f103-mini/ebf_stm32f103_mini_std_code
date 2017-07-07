@@ -18,26 +18,59 @@
 #include "bsp_i2c_gpio.h"
 #include "bsp_usart.h" 
 
+
 /*
 *********************************************************************************************************
-*	函 数 名: ee_CheckOk
-*	功能说明: 判断串行EERPOM是否正常
-*	形    参：无
-*	返 回 值: 1 表示正常， 0 表示不正常
+*	函 数 名: i2c_CheckDevice
+*	功能说明: 检测I2C总线设备，CPU向发送设备地址，然后读取设备应答来判断该设备是否存在
+*	形    参：_Address：设备的I2C总线地址
+*	返 回 值: 返回值 0 表示正确， 返回1表示未探测到
 *********************************************************************************************************
 */
-uint8_t ee_CheckOk(void)
+uint8_t ee_CheckDevice(uint8_t _Address)
 {
-	if (i2c_CheckDevice(EEPROM_DEV_ADDR) == 0)
+	uint8_t ucAck;
+	
+	i2c_Start();		/* 发送启动信号 */
+
+	/* 发送设备地址+读写控制bit（0 = w， 1 = r) bit7 先传 */
+	i2c_SendByte(_Address | EEPROM_I2C_WR);
+	ucAck = i2c_WaitAck();	/* 检测设备的ACK应答 */
+
+	i2c_Stop();			/* 发送停止信号 */
+
+	return ucAck;
+}
+
+
+/*
+*********************************************************************************************************
+*	函 数 名: ee_WaitStandby
+*	功能说明: 等待EEPROM到准备状态，在写入数据后，必须调用本函数
+	
+					写入操作时，使用I2C把数据传输到EEPROM后，
+					EEPROM会向内部空间写入数据需要一定的时间，
+					当EEPROM内部写入完成后会对I2C的设备寻址有响应，
+					调用本函数可等待至EEPROM内部时序写入完毕
+*	形    参：无
+*	返 回 值: 0表示正常，1表示等待超时
+*********************************************************************************************************
+*/
+uint8_t ee_WaitStandby(void)
+{
+	uint32_t wait_count = 0;
+	
+	while(ee_CheckDevice(EEPROM_DEV_ADDR))
 	{
-		return 1;
+		//若检测超过次数，退出循环
+		if(wait_count++>0xFFFF)
+		{
+			//等待超时
+			return 1;
+		}
 	}
-	else
-	{
-		/* 失败后，切记发送I2C总线停止信号 */
-		i2c_Stop();		
-		return 0;
-	}
+	//等待完成
+	return 0;
 }
 
 /*
@@ -132,7 +165,7 @@ uint8_t ee_WriteBytes(uint8_t *_pWriteBuf, uint16_t _usAddress, uint16_t _usSize
 	/* 
 		写串行EEPROM不像读操作可以连续读取很多字节，每次写操作只能在同一个page。
 		对于24xx02，page size = 8
-		简单的处理方法为：按字节写操作模式，没写1个字节，都发送地址
+		简单的处理方法为：按字节写操作模式，每写1个字节，都发送地址
 		为了提高连续写的效率: 本函数采用page wirte操作。
 	*/
 
@@ -145,8 +178,10 @@ uint8_t ee_WriteBytes(uint8_t *_pWriteBuf, uint16_t _usAddress, uint16_t _usSize
 			/*　第０步：发停止信号，启动内部写操作　*/
 			i2c_Stop();
 			
-			/* 通过检查器件应答的方式，判断内部写操作是否完成, 一般小于 10ms 			
-				CLK频率为200KHz时，查询次数为30次左右
+			/* 通过检查器件应答的方式，判断内部写操作是否完成,一般小于 10ms 	
+			
+			  CLK频率为200KHz时，查询次数为30次左右	
+			  原理同 ee_WaitStandby 函数，但该函数检查完成后会产生停止信号，不适用于此处				
 			*/
 			for (m = 0; m < 1000; m++)
 			{				
@@ -191,6 +226,11 @@ uint8_t ee_WriteBytes(uint8_t *_pWriteBuf, uint16_t _usAddress, uint16_t _usSize
 	
 	/* 命令执行成功，发送I2C总线停止信号 */
 	i2c_Stop();
+	
+	//等待最后一次EEPROM内部写入完成
+	if(ee_WaitStandby() == 1) //等于1表示超时
+		goto cmd_fail;
+	
 	return 1;
 
 cmd_fail: /* 命令执行失败后，切记发送停止信号，避免影响I2C总线上其他设备 */
@@ -224,11 +264,7 @@ void ee_Erase(void)
 }
 
 
-/*--------------------------------------------------------------------------------------------------*/
-static void ee_Delay(__IO uint32_t nCount)	 //简单的延时函数
-{
-	for(; nCount != 0; nCount--);
-}
+
 
 
 /*
@@ -242,7 +278,7 @@ uint8_t ee_Test(void)
   uint8_t read_buf[EEPROM_SIZE];
   
 /*-----------------------------------------------------------------------------------*/  
-  if (ee_CheckOk() == 0)
+  if (ee_CheckDevice(EEPROM_DEV_ADDR) == 1)
 	{
 		/* 没有检测到EEPROM */
 		printf("没有检测到串行EEPROM!\r\n");
@@ -264,10 +300,8 @@ uint8_t ee_Test(void)
 	else
 	{		
 		printf("写eeprom成功！\r\n");
-	}
-  
-  /*写完之后需要适当的延时再去读，不然会出错*/
-  ee_Delay(0x0FFFFF);
+	}  
+
 /*-----------------------------------------------------------------------------------*/
   if (ee_ReadBytes(read_buf, 0, EEPROM_SIZE) == 0)
 	{

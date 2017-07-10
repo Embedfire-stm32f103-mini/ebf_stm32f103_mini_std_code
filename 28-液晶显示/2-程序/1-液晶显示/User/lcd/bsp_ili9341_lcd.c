@@ -338,6 +338,11 @@ static void ILI9341_REG_Config ( void )
 		
 }
 
+/**
+ * @brief  ILI9341读取芯片ID函数，可用于测试底层的读写函数
+ * @param  无
+ * @retval 正常时返回值为 0x9341 
+ */
 uint16_t ILI9341_Read_ID(void)
 {
 	uint16_t id = 0;

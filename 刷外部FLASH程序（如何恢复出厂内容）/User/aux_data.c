@@ -69,7 +69,7 @@ Aux_Data_Typedef  burn_data[] =
   [AUX_UNIGBK] =
   {
     .filename           =   "0:/srcdata/UNIGBK.BIN",
-    .description        =   "文件系统中文支持字库(emWin使用,UNIGBK.BIN)",
+    .description        =   "文件系统中文支持编码库(emWin使用,UNIGBK.BIN)",
     .start_addr         =   470*4096 ,
     .length             =   43*4096,
     .burn_option      =  UPDATE,      
@@ -89,7 +89,7 @@ Aux_Data_Typedef  burn_data[] =
     .filename           =   "",
     .description        =   "FATFS文件系统",
     .start_addr         =   514*4096 ,
-    .length             =   1536*4096, 
+    .length             =   1534*4096, 
     .burn_option      =  DO_NOT_UPDATE,
   }
 

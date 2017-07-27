@@ -45,65 +45,12 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "./sdcard/bsp_spi_sdcard.h"
-/** @addtogroup Utilities
-  * @{
-  */
-  
-/** @addtogroup STM32_EVAL
-  * @{
-  */ 
 
-/** @addtogroup Common
-  * @{
-  */
-  
-/** @addtogroup STM32_EVAL_SPI_SD
-  * @brief      This file includes the SD card driver of STM32-EVAL boards.
-  * @{
-  */ 
+//记录卡的类型
+uint8_t  SD_Type=0;
 
-/** @defgroup STM32_EVAL_SPI_SD_Private_Types
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-
-
-/** @defgroup STM32_EVAL_SPI_SD_Private_Defines
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-
-/** @defgroup STM32_EVAL_SPI_SD_Private_Macros
-  * @{
-  */
-/**
-  * @}
-  */ 
   
 
-/** @defgroup STM32_EVAL_SPI_SD_Private_Variables
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-
-
-/** @defgroup STM32_EVAL_SPI_SD_Private_Function_Prototypes
-  * @{
-  */
-/**
-  * @}
-  */ 
-
-
-/** @defgroup STM32_EVAL_SPI_SD_Private_Functions
-  * @{
-  */ 
 
 /**
   * @brief  DeInitializes the SD/SD communication.
@@ -865,6 +812,160 @@ uint16_t SD_GetStatus(void)
 }
 
 /**
+  * @brief  获取SD卡的版本类型，并区分SDSC和SDHC
+  * @param  无
+  * @retval The SD Response: 
+  *         - SD_RESPONSE_FAILURE: Sequence failed
+  *         - SD_RESPONSE_NO_ERROR: Sequence succeed
+  */
+SD_Error SD_GetCardType(void)
+{
+  uint32_t i = 0;
+	uint32_t Count = 0xFFF;
+
+  uint8_t R7R3_Resp[4];
+	uint8_t R1_Resp;
+  
+  /*!< SD chip select low */
+  SD_CS_LOW();
+  
+  /*!< Send CMD8 */
+  SD_SendCmd(SD_CMD_SEND_IF_COND, 0x1AA, 0xFF); 	
+
+  /*!< Check if response is got or a timeout is happen */
+  while (( (R1_Resp = SD_ReadByte()) == 0xFF) && Count)
+  {
+    Count--;
+  }
+  if (Count == 0)
+  {
+    /*!< After time out */
+    return SD_RESPONSE_FAILURE;
+  }
+
+	//响应 = 0x05   非V2.0的卡
+	if(R1_Resp == (SD_IN_IDLE_STATE|SD_ILLEGAL_COMMAND)) 
+	{
+		  /*----------Activates the card initialization process-----------*/
+		do
+		{
+			/*!< SD chip select high */
+			SD_CS_HIGH();
+			
+			/*!< Send Dummy byte 0xFF */
+			SD_WriteByte(SD_DUMMY_BYTE);
+			
+			/*!< SD chip select low */
+			SD_CS_LOW();
+			
+			/*!< 发送CMD1完成V1 版本卡的初始化 */
+			SD_SendCmd(SD_CMD_SEND_OP_COND, 0, 0xFF);
+			/*!< Wait for no error Response (R1 Format) equal to 0x00 */
+		}
+		while (SD_GetResponse(SD_RESPONSE_NO_ERROR));
+		//V1版本的卡完成初始化
+		
+		SD_Type = SD_TYPE_V1;
+		
+		//不处理MMC卡
+		
+		//初始化正常
+			
+	}	
+	//响应 0x01   V2.0的卡
+  else if (R1_Resp == SD_IN_IDLE_STATE)
+  {
+      /*!< 读取CMD8 的R7响应 */
+      for (i = 0; i < 4; i++)
+      {
+        R7R3_Resp[i] = SD_ReadByte();
+      }
+			
+			/*!< SD chip select high */
+			SD_CS_HIGH();
+			
+			/*!< Send Dummy byte 0xFF */
+			SD_WriteByte(SD_DUMMY_BYTE);
+			
+			/*!< SD chip select low */
+			SD_CS_LOW();
+			
+			//判断该卡是否支持2.7-3.6V电压
+			if(R7R3_Resp[2]==0x01 && R7R3_Resp[3]==0xAA)
+			{
+					//支持电压范围，可以操作
+					Count = 200;
+					//发卡初始化指令CMD55+ACMD41								
+				do
+    		{
+					//CMD55，以强调下面的是ACMD命令
+    			SD_SendCmd(SD_CMD_APP_CMD, 0, 0xFF);					
+					if (!SD_GetResponse(SD_RESPONSE_NO_ERROR)) // SD_IN_IDLE_STATE
+						return SD_RESPONSE_FAILURE; //超时返回
+
+					//ACMD41命令带HCS检查位
+    			SD_SendCmd(SD_ACMD_SD_SEND_OP_COND, 0x40000000, 0xFF);
+          
+					if(Count-- == 0)   
+						return SD_RESPONSE_FAILURE; //重试次数超时
+         }while(SD_GetResponse(SD_RESPONSE_NO_ERROR));
+				
+				 //初始化指令完成，读取OCR信息，CMD58
+				 
+				 //-----------鉴别SDSC SDHC卡类型开始-----------		
+				
+				 Count = 200;
+				 do
+					{
+						/*!< SD chip select high */
+						SD_CS_HIGH();
+						
+						/*!< Send Dummy byte 0xFF */
+						SD_WriteByte(SD_DUMMY_BYTE);
+						
+						/*!< SD chip select low */
+						SD_CS_LOW();
+						
+						/*!< 发送CMD58 读取OCR寄存器 */
+						SD_SendCmd(SD_CMD_READ_OCR, 0, 0xFF);					
+					}
+					while ( SD_GetResponse(SD_RESPONSE_NO_ERROR) || Count-- == 0);
+					
+					if(Count == 0)
+						return SD_RESPONSE_FAILURE; //重试次数超时
+
+					//响应正常，读取R3响应
+					
+					  /*!< 读取CMD58的R3响应 */
+						for (i = 0; i < 4; i++)
+						{
+							R7R3_Resp[i] = SD_ReadByte();
+						}		
+						
+						//检查接收到OCR中的bit30(CCS)
+						//CCS = 0:SDSC			 CCS = 1:SDHC
+            if(R7R3_Resp[0]&0x40)    //检查CCS标志
+            {
+                SD_Type = SD_TYPE_V2HC; 
+            }
+            else
+            {
+                SD_Type = SD_TYPE_V2;
+            }
+            //-----------鉴别SDSC SDHC版本卡的流程结束-----------			 
+			}
+  }
+
+	/*!< SD chip select high */
+  SD_CS_HIGH();
+  /*!< Send dummy byte: 8 Clock pulses of delay */
+  SD_WriteByte(SD_DUMMY_BYTE);
+	
+	//初始化正常返回
+	return SD_RESPONSE_NO_ERROR;
+}
+
+/**
   * @brief  Put SD in Idle state.
   * @param  None
   * @retval The SD Response: 
@@ -885,31 +986,17 @@ SD_Error SD_GoIdleState(void)
     /*!< No Idle State Response: return response failue */
     return SD_RESPONSE_FAILURE;
   }
-  /*----------Activates the card initialization process-----------*/
-  do
-  {
-    /*!< SD chip select high */
-    SD_CS_HIGH();
-    
-    /*!< Send Dummy byte 0xFF */
-    SD_WriteByte(SD_DUMMY_BYTE);
-    
-    /*!< SD chip select low */
-    SD_CS_LOW();
-    
-    /*!< Send CMD1 (Activates the card process) until response equal to 0x0 */
-    SD_SendCmd(SD_CMD_SEND_OP_COND, 0, 0xFF);
-    /*!< Wait for no error Response (R1 Format) equal to 0x00 */
-  }
-  while (SD_GetResponse(SD_RESPONSE_NO_ERROR));
-  
-  /*!< SD chip select high */
-  SD_CS_HIGH();
-  
-  /*!< Send dummy byte 0xFF */
-  SD_WriteByte(SD_DUMMY_BYTE);
-  
-  return SD_RESPONSE_NO_ERROR;
+
+	SD_CS_HIGH();
+	
+	/*!< Send Dummy byte 0xFF */
+	SD_WriteByte(SD_DUMMY_BYTE);
+	
+	/*!< SD chip select low */
+	SD_CS_LOW();
+
+	//获取卡的类型
+	return SD_GetCardType();
 }
 
 /**

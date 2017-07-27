@@ -213,6 +213,7 @@ typedef struct
   */
 #define SD_CMD_GO_IDLE_STATE          0   /*!< CMD0 = 0x40 */
 #define SD_CMD_SEND_OP_COND           1   /*!< CMD1 = 0x41 */
+#define SD_CMD_SEND_IF_COND						8		/*!< CMD8 = 0x48 */
 #define SD_CMD_SEND_CSD               9   /*!< CMD9 = 0x49 */
 #define SD_CMD_SEND_CID               10  /*!< CMD10 = 0x4A */
 #define SD_CMD_STOP_TRANSMISSION      12  /*!< CMD12 = 0x4C */
@@ -235,9 +236,16 @@ typedef struct
 #define SD_CMD_UNTAG_ERASE_GROUP      37  /*!< CMD37 = 0x65 */
 #define SD_CMD_ERASE                  38  /*!< CMD38 = 0x66 */
 
-/**
-  * @}
-  */ 
+#define SD_CMD_READ_OCR								58 /*!< CMD58 */
+#define SD_CMD_APP_CMD								55 /*!< CMD55 返回0x01*/
+#define SD_ACMD_SD_SEND_OP_COND			41 /*!< ACMD41  返回0x00*/
+
+//SD卡的类型
+#define SD_TYPE_V1      1
+#define SD_TYPE_V2      2  //SDSC
+#define SD_TYPE_V2HC    4	 //SDHC
+
+
   
 /** @defgroup STM32_EVAL_SPI_SD_Exported_Macros
   * @{

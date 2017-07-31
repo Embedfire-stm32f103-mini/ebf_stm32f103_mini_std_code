@@ -47,8 +47,8 @@
 #include "./sdcard/bsp_spi_sdcard.h"
 
 //记录卡的类型
-uint8_t  SD_Type=0;
-
+uint8_t  SD_Type = SD_TYPE_NOT_SD;	//存储卡的类型
+SD_CardInfo SDCardInfo;	//用于存储卡的信息
   
 
 
@@ -176,7 +176,22 @@ SD_Error SD_Init(void)
   }
   /*------------Put SD in SPI mode--------------*/
   /*!< SD initialized and set to SPI mode properly */
-  return (SD_GoIdleState());
+  if (SD_GoIdleState() == SD_RESPONSE_FAILURE)
+	 return SD_RESPONSE_FAILURE;
+	
+	//获取卡的类型,最多尝试10次
+	i=10;
+	do
+	{
+		SD_GetCardType();
+	}while(SD_Type == SD_TYPE_NOT_SD || i-- > 0);
+	
+	//不支持的卡
+	if(SD_Type == SD_TYPE_NOT_SD)
+		return SD_RESPONSE_FAILURE;
+			
+	return SD_GetCardInfo(&SDCardInfo);	
+	
 }
 
 /**
@@ -210,11 +225,22 @@ SD_Error SD_GetCardInfo(SD_CardInfo *cardinfo)
 
   status = SD_GetCSDRegister(&(cardinfo->SD_csd));
   status = SD_GetCIDRegister(&(cardinfo->SD_cid));
+	
+	if ((SD_Type == SD_TYPE_V1) || (SD_Type == SD_TYPE_V2))
+	{
+
   cardinfo->CardCapacity = (cardinfo->SD_csd.DeviceSize + 1) ;
   cardinfo->CardCapacity *= (1 << (cardinfo->SD_csd.DeviceSizeMul + 2));
   cardinfo->CardBlockSize = 1 << (cardinfo->SD_csd.RdBlockLen);
   cardinfo->CardCapacity *= cardinfo->CardBlockSize;
 
+	}
+	else if (SD_Type == SD_TYPE_V2HC)
+	{
+	  cardinfo->CardCapacity = (uint64_t)(cardinfo->SD_csd.DeviceSize + 1) * 512 * 1024;
+    cardinfo->CardBlockSize = 512;    
+	}	
+	
   /*!< Returns the reponse */
   return status;
 }
@@ -229,10 +255,17 @@ SD_Error SD_GetCardInfo(SD_CardInfo *cardinfo)
   *         - SD_RESPONSE_FAILURE: Sequence failed
   *         - SD_RESPONSE_NO_ERROR: Sequence succeed
   */
-SD_Error SD_ReadBlock(uint8_t* pBuffer, uint32_t ReadAddr, uint16_t BlockSize)
+SD_Error SD_ReadBlock(uint8_t* pBuffer, uint64_t ReadAddr, uint16_t BlockSize)
 {
   uint32_t i = 0;
   SD_Error rvalue = SD_RESPONSE_FAILURE;
+	
+	//SDHC卡块大小固定为512，且读命令中的地址的单位是sector
+	if (SD_Type == SD_TYPE_V2HC)
+  {
+    BlockSize = 512;
+    ReadAddr /= 512;
+  }
 
   /*!< SD chip select low */
   SD_CS_LOW();
@@ -283,10 +316,17 @@ SD_Error SD_ReadBlock(uint8_t* pBuffer, uint32_t ReadAddr, uint16_t BlockSize)
   *         - SD_RESPONSE_FAILURE: Sequence failed
   *         - SD_RESPONSE_NO_ERROR: Sequence succeed
   */
-SD_Error SD_ReadMultiBlocks(uint8_t* pBuffer, uint32_t ReadAddr, uint16_t BlockSize, uint32_t NumberOfBlocks)
+SD_Error SD_ReadMultiBlocks(uint8_t* pBuffer, uint64_t ReadAddr, uint16_t BlockSize, uint32_t NumberOfBlocks)
 {
   uint32_t i = 0, Offset = 0;
   SD_Error rvalue = SD_RESPONSE_FAILURE;
+	
+	//SDHC卡块大小固定为512，且读命令中的地址的单位是sector
+	if (SD_Type == SD_TYPE_V2HC)
+  {
+    BlockSize = 512;
+    ReadAddr /= 512;
+  }
   
   /*!< SD chip select low */
   SD_CS_LOW();
@@ -343,10 +383,17 @@ SD_Error SD_ReadMultiBlocks(uint8_t* pBuffer, uint32_t ReadAddr, uint16_t BlockS
   *         - SD_RESPONSE_FAILURE: Sequence failed
   *         - SD_RESPONSE_NO_ERROR: Sequence succeed
   */
-SD_Error SD_WriteBlock(uint8_t* pBuffer, uint32_t WriteAddr, uint16_t BlockSize)
+SD_Error SD_WriteBlock(uint8_t* pBuffer, uint64_t WriteAddr, uint16_t BlockSize)
 {
   uint32_t i = 0;
   SD_Error rvalue = SD_RESPONSE_FAILURE;
+	
+	//SDHC卡块大小固定为512，且写命令中的地址的单位是sector
+	if (SD_Type == SD_TYPE_V2HC)
+  {
+    BlockSize = 512;
+    WriteAddr /= 512;
+  }
 
   /*!< SD chip select low */
   SD_CS_LOW();
@@ -401,10 +448,17 @@ SD_Error SD_WriteBlock(uint8_t* pBuffer, uint32_t WriteAddr, uint16_t BlockSize)
   *         - SD_RESPONSE_FAILURE: Sequence failed
   *         - SD_RESPONSE_NO_ERROR: Sequence succeed
   */
-SD_Error SD_WriteMultiBlocks(uint8_t* pBuffer, uint32_t WriteAddr, uint16_t BlockSize, uint32_t NumberOfBlocks)
+SD_Error SD_WriteMultiBlocks(uint8_t* pBuffer, uint64_t WriteAddr, uint16_t BlockSize, uint32_t NumberOfBlocks)
 {
   uint32_t i = 0, Offset = 0;
   SD_Error rvalue = SD_RESPONSE_FAILURE;
+	
+	//SDHC卡块大小固定为512，且写命令中的地址的单位是sector
+	if (SD_Type == SD_TYPE_V2HC)
+  {
+    BlockSize = 512;
+    WriteAddr /= 512;
+  }
 
   /*!< SD chip select low */
   SD_CS_LOW();
@@ -526,22 +580,36 @@ SD_Error SD_GetCSDRegister(SD_CSD* SD_csd)
 
   SD_csd->DeviceSize = (CSD_Tab[6] & 0x03) << 10;
 
-  /*!< Byte 7 */
-  SD_csd->DeviceSize |= (CSD_Tab[7]) << 2;
+	//V1卡与SDSC卡的信息
+  if ((SD_Type == SD_TYPE_V1) || (SD_Type == SD_TYPE_V2))
+	{
+		/*!< Byte 7 */
+		SD_csd->DeviceSize |= (CSD_Tab[7]) << 2;
 
-  /*!< Byte 8 */
-  SD_csd->DeviceSize |= (CSD_Tab[8] & 0xC0) >> 6;
+		/*!< Byte 8 */
+		SD_csd->DeviceSize |= (CSD_Tab[8] & 0xC0) >> 6;
 
-  SD_csd->MaxRdCurrentVDDMin = (CSD_Tab[8] & 0x38) >> 3;
-  SD_csd->MaxRdCurrentVDDMax = (CSD_Tab[8] & 0x07);
+		SD_csd->MaxRdCurrentVDDMin = (CSD_Tab[8] & 0x38) >> 3;
+		SD_csd->MaxRdCurrentVDDMax = (CSD_Tab[8] & 0x07);
 
-  /*!< Byte 9 */
-  SD_csd->MaxWrCurrentVDDMin = (CSD_Tab[9] & 0xE0) >> 5;
-  SD_csd->MaxWrCurrentVDDMax = (CSD_Tab[9] & 0x1C) >> 2;
-  SD_csd->DeviceSizeMul = (CSD_Tab[9] & 0x03) << 1;
-  /*!< Byte 10 */
-  SD_csd->DeviceSizeMul |= (CSD_Tab[10] & 0x80) >> 7;
+		/*!< Byte 9 */
+		SD_csd->MaxWrCurrentVDDMin = (CSD_Tab[9] & 0xE0) >> 5;
+		SD_csd->MaxWrCurrentVDDMax = (CSD_Tab[9] & 0x1C) >> 2;
+		SD_csd->DeviceSizeMul = (CSD_Tab[9] & 0x03) << 1;
+		/*!< Byte 10 */
+		SD_csd->DeviceSizeMul |= (CSD_Tab[10] & 0x80) >> 7;
+  }
+	//SDHC卡的信息
+	else if (SD_Type == SD_TYPE_V2HC)
+	{
+		SD_csd->DeviceSize = (CSD_Tab[7] & 0x3F) << 16;
+
+		SD_csd->DeviceSize |= (CSD_Tab[8] << 8);
     
+		SD_csd->DeviceSize |= (CSD_Tab[9]);		
+	}
+		
+		
   SD_csd->EraseGrSize = (CSD_Tab[10] & 0x40) >> 6;
   SD_csd->EraseGrMul = (CSD_Tab[10] & 0x3F) << 1;
 
@@ -826,8 +894,14 @@ SD_Error SD_GetCardType(void)
   uint8_t R7R3_Resp[4];
 	uint8_t R1_Resp;
   
-  /*!< SD chip select low */
-  SD_CS_LOW();
+	SD_CS_HIGH();
+	
+	/*!< Send Dummy byte 0xFF */
+	SD_WriteByte(SD_DUMMY_BYTE);
+	
+	/*!< SD chip select low */
+	SD_CS_LOW();	
+
   
   /*!< Send CMD8 */
   SD_SendCmd(SD_CMD_SEND_IF_COND, 0x1AA, 0xFF); 	
@@ -930,7 +1004,7 @@ SD_Error SD_GetCardType(void)
 						SD_SendCmd(SD_CMD_READ_OCR, 0, 0xFF);					
 					}
 					while ( SD_GetResponse(SD_RESPONSE_NO_ERROR) || Count-- == 0);
-					
+
 					if(Count == 0)
 						return SD_RESPONSE_FAILURE; //重试次数超时
 
@@ -990,13 +1064,11 @@ SD_Error SD_GoIdleState(void)
 	SD_CS_HIGH();
 	
 	/*!< Send Dummy byte 0xFF */
-	SD_WriteByte(SD_DUMMY_BYTE);
-	
-	/*!< SD chip select low */
-	SD_CS_LOW();
+	SD_WriteByte(SD_DUMMY_BYTE);	
 
-	//获取卡的类型
-	return SD_GetCardType();
+
+	//正常返回
+	return SD_RESPONSE_NO_ERROR ;
 }
 
 /**

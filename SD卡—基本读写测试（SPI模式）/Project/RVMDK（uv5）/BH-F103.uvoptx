@@ -171,9 +171,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>904</LineNumber>
+          <LineNumber>933</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134223570</Address>
+          <Address>134224594</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -182,14 +182,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>G:\GIT_OSC\STM32_develop\F103-MINI渚嬬▼\develop\1-鍥轰欢搴撲緥绋?SD鍗♀€斿熀鏈鍐欐祴璇曪紙SPI妯″紡锛?Project\User\sdcard\bsp_spi_sdcard.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Template\../../User/sdcard/bsp_spi_sdcard.c\904</Expression>
+          <Expression>\\Template\../../User/sdcard/bsp_spi_sdcard.c\933</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>910</LineNumber>
+          <LineNumber>949</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134223594</Address>
+          <Address>134224648</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -198,14 +198,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>G:\GIT_OSC\STM32_develop\F103-MINI渚嬬▼\develop\1-鍥轰欢搴撲緥绋?SD鍗♀€斿熀鏈鍐欐祴璇曪紙SPI妯″紡锛?Project\User\sdcard\bsp_spi_sdcard.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Template\../../User/sdcard/bsp_spi_sdcard.c\910</Expression>
+          <Expression>\\Template\../../User/sdcard/bsp_spi_sdcard.c\949</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>919</LineNumber>
+          <LineNumber>188</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134223626</Address>
+          <Address>134224928</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -214,39 +214,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>G:\GIT_OSC\STM32_develop\F103-MINI渚嬬▼\develop\1-鍥轰欢搴撲緥绋?SD鍗♀€斿熀鏈鍐欐祴璇曪紙SPI妯″紡锛?Project\User\sdcard\bsp_spi_sdcard.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Template\../../User/sdcard/bsp_spi_sdcard.c\919</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>938</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134223674</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>G:\GIT_OSC\STM32_develop\F103-MINI渚嬬▼\develop\1-鍥轰欢搴撲緥绋?SD鍗♀€斿熀鏈鍐欐祴璇曪紙SPI妯″紡锛?Project\User\sdcard\bsp_spi_sdcard.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Template\../../User/sdcard/bsp_spi_sdcard.c\938</Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>922</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134223630</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>G:\GIT_OSC\STM32_develop\F103-MINI渚嬬▼\develop\1-鍥轰欢搴撲緥绋?SD鍗♀€斿熀鏈鍐欐祴璇曪紙SPI妯″紡锛?Project\User\sdcard\bsp_spi_sdcard.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Template\../../User/sdcard/bsp_spi_sdcard.c\922</Expression>
+          <Expression>\\Template\../../User/sdcard/bsp_spi_sdcard.c\188</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>

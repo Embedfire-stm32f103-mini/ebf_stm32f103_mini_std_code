@@ -50,8 +50,7 @@ void SD_Test(void)
 {
 
 	LED2_ON;
-  /*------------------------------ SD Init ---------------------------------- */
-	/* SD卡使用SDIO中断及DMA中断接收数据，中断服务程序位于bsp_sdio_sd.c文件尾*/
+	/* SD初始化*/
   if((Status = SD_Init()) != SD_RESPONSE_NO_ERROR)
   {    
 		LED1_ON;

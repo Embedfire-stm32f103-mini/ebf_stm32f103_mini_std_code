@@ -1,0 +1,1512 @@
+
+========================================================================
+
+** ELF Header Information
+
+    File Name: bsp_led.o
+
+    Machine class: ELFCLASS32 (32-bit)
+    Data encoding: ELFDATA2LSB (Little endian)
+    Header version: EV_CURRENT (Current version)
+    Operating System ABI: none
+    ABI Version: 0
+    File Type: ET_REL (Relocatable object) (1)
+    Machine: EM_ARM (ARM)
+
+    Entry offset (in SHF_ENTRYSECT section): 0x00000000
+    Flags: None (0x05000000)
+
+    ARM ELF revision: 5 (ABI version 2)
+
+    Header size: 52 bytes (0x34)
+    Program header entry size: 0 bytes (0x0)
+    Section header entry size: 40 bytes (0x28)
+
+    Program header entries: 0
+    Section header entries: 178
+
+    Program header offset: 0 (0x00000000)
+    Section header offset: 377984 (0x0005c480)
+
+    Section header string table index: 175
+
+========================================================================
+
+** Section #1 'i.LED_GPIO_Config' (SHT_PROGBITS) [SHF_ALLOC + SHF_EXECINSTR]
+    Size   : 72 bytes (alignment 4)
+    Address: 0x00000000
+
+
+** Section #137 '.reli.LED_GPIO_Config' (SHT_REL)
+    Size   : 40 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    5 relocations applied to section #1 'i.LED_GPIO_Config'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006   10 R_ARM_THM_CALL          140 RCC_APB2PeriphClockCmd   Ref
+      1  0x00000020   10 R_ARM_THM_CALL          138 GPIO_Init                Ref
+      2  0x0000002e   10 R_ARM_THM_CALL          138 GPIO_Init                Ref
+      3  0x00000036   10 R_ARM_THM_CALL          139 GPIO_SetBits             Ref
+      4  0x0000003e   10 R_ARM_THM_CALL          139 GPIO_SetBits             Ref
+
+
+** Section #2 '.arm_vfe_header' (SHT_PROGBITS)
+    Size   : 4 bytes (alignment 4)
+
+
+** Section #3 '.comment' (SHT_PROGBITS)
+    Size   : 681 bytes
+
+
+** Section #4 '.debug_frame' (SHT_PROGBITS)
+    Size   : 76 bytes
+
+
+** Section #138 '.rel.debug_frame' (SHT_REL)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    2 relocations applied to section #4 '.debug_frame'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000038    2 R_ARM_ABS32               6 __ARM_grp_.debug_frame$13 #4 '.debug_frame'
+      1  0x0000003c    2 R_ARM_ABS32               4 i.LED_GPIO_Config        #1 'i.LED_GPIO_Config'
+
+
+** Section #5 '.debug_info' (SHT_PROGBITS)
+    Size   : 280 bytes
+
+
+** Section #139 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #5 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000010b    2 R_ARM_ABS32              12 __ARM_grp_.debug_macinfo$4 #10 '.debug_macinfo'
+      2  0x0000010f    2 R_ARM_ABS32               9 __ARM_grp_.debug_line$1  #7 '.debug_line'
+
+
+** Section #6 '.debug_info' (SHT_PROGBITS)
+    Size   : 348 bytes
+
+
+** Section #140 '.rel.debug_info' (SHT_REL)
+    Size   : 64 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    8 relocations applied to section #6 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000010b    2 R_ARM_ABS32               4 i.LED_GPIO_Config        #1 'i.LED_GPIO_Config'
+      2  0x0000010f    2 R_ARM_ABS32               4 i.LED_GPIO_Config        #1 'i.LED_GPIO_Config'
+      3  0x00000113    2 R_ARM_ABS32              10 __ARM_grp_.debug_line$8  #8 '.debug_line'
+      4  0x0000012e    2 R_ARM_ABS32               4 i.LED_GPIO_Config        #1 'i.LED_GPIO_Config'
+      5  0x00000132    2 R_ARM_ABS32               4 i.LED_GPIO_Config        #1 'i.LED_GPIO_Config'
+      6  0x00000136    2 R_ARM_ABS32              11 __ARM_grp_.debug_loc$12  #9 '.debug_loc'
+      7  0x0000014f    2 R_ARM_ABS32              33 __ARM_grp..debug_info$stm32f10x_gpio.h$.2_k45000_ZMoqia4fl5d_700000 #75 '.debug_info'
+
+
+** Section #7 '.debug_line' (SHT_PROGBITS)
+    Size   : 60 bytes
+
+
+** Section #8 '.debug_line' (SHT_PROGBITS)
+    Size   : 120 bytes
+
+
+** Section #141 '.rel.debug_line' (SHT_REL)
+    Size   : 8 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    1 relocations applied to section #8 '.debug_line'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x0000003d    2 R_ARM_ABS32               4 i.LED_GPIO_Config        #1 'i.LED_GPIO_Config'
+
+
+** Section #9 '.debug_loc' (SHT_PROGBITS)
+    Size   : 32 bytes
+
+
+** Section #10 '.debug_macinfo' (SHT_PROGBITS)
+    Size   : 1004 bytes
+
+
+** Section #11 '.debug_pubnames' (SHT_PROGBITS)
+    Size   : 38 bytes
+
+
+** Section #142 '.rel.debug_pubnames' (SHT_REL)
+    Size   : 8 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    1 relocations applied to section #11 '.debug_pubnames'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32               8 __ARM_grp_.debug_info$9  #6 '.debug_info'
+
+
+** Section #12 '__ARM_grp.stdint.h.2_QF1000_hBN_enPLIk3_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #13 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 768 bytes
+
+
+** Section #143 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #13 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x00000078    2 R_ARM_ABS32             109 __ARM_grp..debug_macinfo$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #15 '.debug_macinfo'
+      2  0x0000007c    2 R_ARM_ABS32              79 __ARM_grp..debug_line$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #14 '.debug_line'
+
+
+** Section #14 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 84 bytes
+
+
+** Section #15 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 2196 bytes
+
+
+** Section #16 '__ARM_grp.core_cm3.h.2_jJL100_e5rmnsVyD61_b70000' (SHT_GROUP)
+    Size   : 20 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #17 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 3320 bytes
+
+
+** Section #144 '.rel.debug_info' (SHT_REL)
+    Size   : 648 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    81 relocations applied to section #17 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x00000113    2 R_ARM_ABS32             107 __ARM_grp..debug_macinfo$core_cm3.h$.2_jJL100_e5rmnsVyD61_b70000 #19 '.debug_macinfo'
+      2  0x00000117    2 R_ARM_ABS32              77 __ARM_grp..debug_line$core_cm3.h$.2_jJL100_e5rmnsVyD61_b70000 #18 '.debug_line'
+      3  0x00000150    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x0000015f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x00000173    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x00000192    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x000001ad    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x000001cb    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      9  0x000001da    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     10  0x000001ee    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     11  0x0000020d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     12  0x00000228    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     13  0x00000248    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     14  0x00000257    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     15  0x0000026d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     16  0x0000028e    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     17  0x000002ad    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     18  0x000002cb    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     19  0x000002da    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     20  0x000002ee    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     21  0x0000030d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     22  0x00000328    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     23  0x00000352    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     24  0x00000370    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     25  0x00000387    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     26  0x000003ae    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     27  0x000003bd    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     28  0x000003dc    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     29  0x00000400    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     30  0x00000426    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     31  0x0000042c    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     32  0x00000440    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     33  0x00000463    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     34  0x0000048c    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     35  0x000004ae    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     36  0x000004b4    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     37  0x000004c8    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     38  0x000004e9    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     39  0x000004f4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     40  0x0000051c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     41  0x00000522    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     42  0x00000536    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     43  0x00000559    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     44  0x0000055f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     45  0x00000573    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     46  0x00000589    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     47  0x000005a4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     48  0x000005bc    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     49  0x000005d6    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     50  0x000005ec    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     51  0x0000060f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     52  0x0000061e    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     53  0x00000669    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     54  0x00000683    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     55  0x00000699    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     56  0x000006a0    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     57  0x000006bc    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     58  0x000006c2    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     59  0x000006d7    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     60  0x0000070d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     61  0x00000713    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     62  0x00000725    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     63  0x000007a2    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     64  0x000007d4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     65  0x00000806    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     66  0x00000839    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     67  0x0000086c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     68  0x0000089e    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     69  0x000008c8    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     70  0x000008ce    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     71  0x000009f1    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     72  0x00000a72    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     73  0x00000a94    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     74  0x00000abe    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     75  0x00000ae7    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     76  0x00000b10    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     77  0x00000b52    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     78  0x00000b87    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     79  0x00000c62    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     80  0x00000c81    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #18 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 120 bytes
+
+
+** Section #19 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 11704 bytes
+
+
+** Section #20 '.debug_pubnames' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 35 bytes
+
+
+** Section #145 '.rel.debug_pubnames' (SHT_REL)
+    Size   : 8 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    1 relocations applied to section #20 '.debug_pubnames'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              17 __ARM_grp..debug_info$core_cm3.h$.2_jJL100_e5rmnsVyD61_b70000 #17 '.debug_info'
+
+
+** Section #21 '__ARM_grp.system_stm32f10x.h.2_es2000_jjQKv$uLsX7_f00000' (SHT_GROUP)
+    Size   : 20 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #22 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 320 bytes
+
+
+** Section #146 '.rel.debug_info' (SHT_REL)
+    Size   : 32 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    4 relocations applied to section #22 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011b    2 R_ARM_ABS32             134 __ARM_grp..debug_macinfo$system_stm32f10x.h$.2_es2000_jjQKv$uLsX7_f00000 #24 '.debug_macinfo'
+      2  0x0000011f    2 R_ARM_ABS32             104 __ARM_grp..debug_line$system_stm32f10x.h$.2_es2000_jjQKv$uLsX7_f00000 #23 '.debug_line'
+      3  0x00000135    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #23 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 80 bytes
+
+
+** Section #24 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 32 bytes
+
+
+** Section #25 '.debug_pubnames' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 38 bytes
+
+
+** Section #147 '.rel.debug_pubnames' (SHT_REL)
+    Size   : 8 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    1 relocations applied to section #25 '.debug_pubnames'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              44 __ARM_grp..debug_info$system_stm32f10x.h$.2_es2000_jjQKv$uLsX7_f00000 #22 '.debug_info'
+
+
+** Section #26 '__ARM_grp.stm32f10x.h.2_c$x100_LoH0uPoy3R6_k20000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #27 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 9560 bytes
+
+
+** Section #148 '.rel.debug_info' (SHT_REL)
+    Size   : 1160 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    145 relocations applied to section #27 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x00000114    2 R_ARM_ABS32             110 __ARM_grp..debug_macinfo$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #29 '.debug_macinfo'
+      2  0x00000118    2 R_ARM_ABS32              80 __ARM_grp..debug_line$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #28 '.debug_line'
+      3  0x0000056f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x0000057d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x0000058a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x00000594    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x000005a7    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x000005ba    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      9  0x000005cc    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     10  0x000005df    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     11  0x000005f2    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     12  0x0000063d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     13  0x0000064b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     14  0x00000658    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     15  0x00000662    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     16  0x00000675    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     17  0x00000688    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     18  0x0000069a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     19  0x000006ad    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     20  0x000006c0    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     21  0x000008b5    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     22  0x000008d3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     23  0x000008f1    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     24  0x0000090f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     25  0x0000092d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     26  0x0000094b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     27  0x00000969    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     28  0x00000987    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     29  0x000009a5    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     30  0x000009c3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     31  0x000009e3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     32  0x00000a04    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     33  0x00000a22    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     34  0x00000a38    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     35  0x00000a6a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     36  0x00000a8a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     37  0x00000aaa    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     38  0x00000aca    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     39  0x00000aea    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     40  0x00000b0a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     41  0x00000b2a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     42  0x00000b4a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     43  0x00000b6a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     44  0x00000b8a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     45  0x00000baa    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     46  0x00000bca    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     47  0x00000bea    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     48  0x00000c0a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     49  0x00000c2a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     50  0x00000c4a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     51  0x00000c6b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     52  0x00000c8d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     53  0x00000caf    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     54  0x00000cd1    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     55  0x00000cf3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     56  0x00000d15    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     57  0x00000d37    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     58  0x00000d59    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     59  0x00000d7b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     60  0x00000d9d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     61  0x00000dbf    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     62  0x00000de1    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     63  0x00000e03    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     64  0x00000e25    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     65  0x00000e47    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     66  0x00000e69    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     67  0x00000fcd    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     68  0x00001023    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     69  0x00001061    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     70  0x00001082    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     71  0x000010a4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     72  0x000010bd    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     73  0x00001199    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     74  0x000011ac    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     75  0x000013d6    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     76  0x00001414    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     77  0x000014c3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     78  0x0000152b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     79  0x0000156f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     80  0x0000159d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     81  0x000015de    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     82  0x0000160d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     83  0x000016bd    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     84  0x0000176a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     85  0x000019e8    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     86  0x00001a59    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     87  0x00001b8e    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     88  0x00001bd3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     89  0x00001bf1    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     90  0x00001c10    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     91  0x00001c2f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     92  0x00001c4c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     93  0x00001c6a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     94  0x00001c88    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     95  0x00001ca6    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     96  0x00001cc6    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     97  0x00001e0b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     98  0x00001e29    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     99  0x00001e48    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    100  0x00001e67    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    101  0x00001e86    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    102  0x00001ea5    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    103  0x00001ec4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    104  0x00001ee3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    105  0x00001f02    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    106  0x00001f21    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    107  0x00002010    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    108  0x0000203b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    109  0x00002091    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    110  0x000020af    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    111  0x000020cc    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    112  0x000020e9    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    113  0x00002109    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    114  0x0000212a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    115  0x0000214b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    116  0x0000216d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    117  0x0000218d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    118  0x000021c4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    119  0x000021e2    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    120  0x00002201    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    121  0x00002220    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    122  0x0000223d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    123  0x0000225b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    124  0x0000227b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    125  0x0000229b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    126  0x000022ba    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    127  0x000022d8    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    128  0x000022f7    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    129  0x00002316    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    130  0x00002335    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    131  0x00002355    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    132  0x00002375    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    133  0x00002395    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    134  0x000023b5    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    135  0x000023d5    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    136  0x000023f4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    137  0x00002414    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    138  0x0000244a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    139  0x00002467    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    140  0x00002485    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    141  0x000024a3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    142  0x000024c1    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    143  0x000024df    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+    144  0x000024fe    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #28 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 188 bytes
+
+
+** Section #29 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 193464 bytes
+
+
+** Section #30 '__ARM_grp.stm32f10x_adc.h.2_84T000_bHzZAOZWGt5_t20000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #31 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 480 bytes
+
+
+** Section #149 '.rel.debug_info' (SHT_REL)
+    Size   : 72 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    9 relocations applied to section #31 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             111 __ARM_grp..debug_macinfo$stm32f10x_adc.h$.2_84T000_bHzZAOZWGt5_t20000 #33 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              81 __ARM_grp..debug_line$stm32f10x_adc.h$.2_84T000_bHzZAOZWGt5_t20000 #32 '.debug_line'
+      3  0x00000133    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x0000014d    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+      5  0x0000016d    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+      6  0x0000018b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x000001a2    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x000001bc    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #32 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #33 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 8564 bytes
+
+
+** Section #34 '__ARM_grp.stm32f10x_bkp.h.2_AU1000_dV_ngEVSj6d_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #35 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 296 bytes
+
+
+** Section #150 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #35 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             112 __ARM_grp..debug_macinfo$stm32f10x_bkp.h$.2_AU1000_dV_ngEVSj6d_300000 #37 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              82 __ARM_grp..debug_line$stm32f10x_bkp.h$.2_AU1000_dV_ngEVSj6d_300000 #36 '.debug_line'
+
+
+** Section #36 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #37 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 2872 bytes
+
+
+** Section #38 '__ARM_grp.stm32f10x_can.h.2_EyS000_RRxyrhIIdE3_U20000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #39 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 1048 bytes
+
+
+** Section #151 '.rel.debug_info' (SHT_REL)
+    Size   : 288 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    36 relocations applied to section #39 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             113 __ARM_grp..debug_macinfo$stm32f10x_can.h$.2_EyS000_RRxyrhIIdE3_U20000 #41 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              83 __ARM_grp..debug_line$stm32f10x_can.h$.2_EyS000_RRxyrhIIdE3_U20000 #40 '.debug_line'
+      3  0x00000138    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x0000014a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x0000015b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x0000016c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x0000017d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x0000018f    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+      9  0x000001a1    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     10  0x000001b3    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     11  0x000001c5    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     12  0x000001d7    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     13  0x000001e9    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     14  0x0000021f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     15  0x00000238    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     16  0x00000256    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     17  0x00000273    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     18  0x00000295    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     19  0x000002af    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     20  0x000002c7    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     21  0x000002e0    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     22  0x000002fe    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+     23  0x00000330    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     24  0x0000033f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     25  0x0000034c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     26  0x00000359    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     27  0x00000366    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     28  0x00000371    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     29  0x000003a2    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     30  0x000003b1    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     31  0x000003be    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     32  0x000003cb    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     33  0x000003d8    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     34  0x000003e3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     35  0x000003fc    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #40 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #41 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 7208 bytes
+
+
+** Section #42 '__ARM_grp.stm32f10x_cec.h.2_Q82000_$kzDnEm8Nva_800000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #43 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 376 bytes
+
+
+** Section #152 '.rel.debug_info' (SHT_REL)
+    Size   : 40 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    5 relocations applied to section #43 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             114 __ARM_grp..debug_macinfo$stm32f10x_cec.h$.2_Q82000_$kzDnEm8Nva_800000 #45 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              84 __ARM_grp..debug_line$stm32f10x_cec.h$.2_Q82000_$kzDnEm8Nva_800000 #44 '.debug_line'
+      3  0x0000013c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x00000157    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #44 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #45 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 1828 bytes
+
+
+** Section #46 '__ARM_grp.stm32f10x_crc.h.2_Qv0000_IBHPpqlN$Qb_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #47 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 296 bytes
+
+
+** Section #153 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #47 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             116 __ARM_grp..debug_macinfo$stm32f10x_crc.h$.2_Qv0000_IBHPpqlN$Qb_300000 #49 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              86 __ARM_grp..debug_line$stm32f10x_crc.h$.2_Qv0000_IBHPpqlN$Qb_300000 #48 '.debug_line'
+
+
+** Section #48 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #49 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 32 bytes
+
+
+** Section #50 '__ARM_grp.stm32f10x_dac.h.2_sl3000_EeY6gvJr5r4_a00000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #51 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 440 bytes
+
+
+** Section #154 '.rel.debug_info' (SHT_REL)
+    Size   : 56 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    7 relocations applied to section #51 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             117 __ARM_grp..debug_macinfo$stm32f10x_dac.h$.2_sl3000_EeY6gvJr5r4_a00000 #53 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              87 __ARM_grp..debug_line$stm32f10x_dac.h$.2_sl3000_EeY6gvJr5r4_a00000 #52 '.debug_line'
+      3  0x00000136    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x00000152    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x0000017c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x00000196    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #52 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #53 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 4248 bytes
+
+
+** Section #54 '__ARM_grp.stm32f10x_dbgmcu.h.2_o51000_KhOeJ11sri5_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #55 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 300 bytes
+
+
+** Section #155 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #55 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011f    2 R_ARM_ABS32             118 __ARM_grp..debug_macinfo$stm32f10x_dbgmcu.h$.2_o51000_KhOeJ11sri5_300000 #57 '.debug_macinfo'
+      2  0x00000123    2 R_ARM_ABS32              88 __ARM_grp..debug_line$stm32f10x_dbgmcu.h$.2_o51000_KhOeJ11sri5_300000 #56 '.debug_line'
+
+
+** Section #56 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 120 bytes
+
+
+** Section #57 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 1228 bytes
+
+
+** Section #58 '__ARM_grp.stm32f10x_dma.h.2_QP5000_WvzRLtdp9H2_h00000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #59 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 592 bytes
+
+
+** Section #156 '.rel.debug_info' (SHT_REL)
+    Size   : 112 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    14 relocations applied to section #59 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             119 __ARM_grp..debug_macinfo$stm32f10x_dma.h$.2_QP5000_WvzRLtdp9H2_h00000 #61 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              89 __ARM_grp..debug_line$stm32f10x_dma.h$.2_QP5000_WvzRLtdp9H2_h00000 #60 '.debug_line'
+      3  0x00000141    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x0000015d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x0000016e    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x00000186    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x000001a1    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x000001b8    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      9  0x000001d8    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     10  0x000001f4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     11  0x00000206    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     12  0x0000021c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     13  0x0000022d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #60 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #61 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 9240 bytes
+
+
+** Section #62 '__ARM_grp.stm32f10x_exti.h.2_UHP000_a2tpUiCmzu4_p20000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #63 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 584 bytes
+
+
+** Section #157 '.rel.debug_info' (SHT_REL)
+    Size   : 40 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    5 relocations applied to section #63 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011d    2 R_ARM_ABS32             120 __ARM_grp..debug_macinfo$stm32f10x_exti.h$.2_UHP000_a2tpUiCmzu4_p20000 #65 '.debug_macinfo'
+      2  0x00000121    2 R_ARM_ABS32              90 __ARM_grp..debug_line$stm32f10x_exti.h$.2_UHP000_a2tpUiCmzu4_p20000 #64 '.debug_line'
+      3  0x000001ea    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x00000225    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+
+
+** Section #64 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 120 bytes
+
+
+** Section #65 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 1588 bytes
+
+
+** Section #66 '__ARM_grp.stm32f10x_flash.h.2_4q3000_$ajAYL1rVA6_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #67 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 408 bytes
+
+
+** Section #158 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #67 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011e    2 R_ARM_ABS32             121 __ARM_grp..debug_macinfo$stm32f10x_flash.h$.2_4q3000_$ajAYL1rVA6_300000 #69 '.debug_macinfo'
+      2  0x00000122    2 R_ARM_ABS32              91 __ARM_grp..debug_line$stm32f10x_flash.h$.2_4q3000_$ajAYL1rVA6_300000 #68 '.debug_line'
+
+
+** Section #68 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 120 bytes
+
+
+** Section #69 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 5932 bytes
+
+
+** Section #70 '__ARM_grp.stm32f10x_fsmc.h.2_oD4000_44kJ96JM_A4_E00000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #71 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 1668 bytes
+
+
+** Section #159 '.rel.debug_info' (SHT_REL)
+    Size   : 296 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    37 relocations applied to section #71 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011d    2 R_ARM_ABS32             122 __ARM_grp..debug_macinfo$stm32f10x_fsmc.h$.2_oD4000_44kJ96JM_A4_E00000 #73 '.debug_macinfo'
+      2  0x00000121    2 R_ARM_ABS32              92 __ARM_grp..debug_line$stm32f10x_fsmc.h$.2_oD4000_44kJ96JM_A4_E00000 #72 '.debug_line'
+      3  0x00000141    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x0000015f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x0000017b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x0000019f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x000001b9    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x000001d3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      9  0x000001ec    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     10  0x00000229    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     11  0x00000246    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     12  0x0000025f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     13  0x0000027d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     14  0x0000029b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     15  0x000002ba    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     16  0x000002db    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     17  0x000002f2    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     18  0x00000311    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     19  0x0000032e    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     20  0x00000347    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     21  0x00000362    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     22  0x0000037b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     23  0x000003fc    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     24  0x00000418    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     25  0x00000434    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     26  0x0000044f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     27  0x00000491    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     28  0x000004ab    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     29  0x000004c9    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     30  0x000004db    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     31  0x000004f5    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     32  0x00000511    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     33  0x0000052c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     34  0x000005b7    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     35  0x000005d3    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     36  0x000005ee    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #72 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 120 bytes
+
+
+** Section #73 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 6252 bytes
+
+
+** Section #74 '__ARM_grp.stm32f10x_gpio.h.2_k45000_ZMoqia4fl5d_700000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #75 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 696 bytes
+
+
+** Section #160 '.rel.debug_info' (SHT_REL)
+    Size   : 32 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    4 relocations applied to section #75 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011d    2 R_ARM_ABS32             123 __ARM_grp..debug_macinfo$stm32f10x_gpio.h$.2_k45000_ZMoqia4fl5d_700000 #77 '.debug_macinfo'
+      2  0x00000121    2 R_ARM_ABS32              93 __ARM_grp..debug_line$stm32f10x_gpio.h$.2_k45000_ZMoqia4fl5d_700000 #76 '.debug_line'
+      3  0x00000244    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #76 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 120 bytes
+
+
+** Section #77 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 7664 bytes
+
+
+** Section #78 '__ARM_grp.stm32f10x_i2c.h.2_cX4000_$fqMEaJP8sf_c00000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #79 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 464 bytes
+
+
+** Section #161 '.rel.debug_info' (SHT_REL)
+    Size   : 72 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    9 relocations applied to section #79 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             124 __ARM_grp..debug_macinfo$stm32f10x_i2c.h$.2_cX4000_$fqMEaJP8sf_c00000 #81 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              94 __ARM_grp..debug_line$stm32f10x_i2c.h$.2_cX4000_$fqMEaJP8sf_c00000 #80 '.debug_line'
+      3  0x00000139    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x0000014b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x00000162    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x0000017b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x0000018c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x000001ad    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #80 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #81 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 7492 bytes
+
+
+** Section #82 '__ARM_grp.stm32f10x_iwdg.h.2_sZ0000_PUfBxu5oyf5_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #83 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 296 bytes
+
+
+** Section #162 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #83 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011d    2 R_ARM_ABS32             125 __ARM_grp..debug_macinfo$stm32f10x_iwdg.h$.2_sZ0000_PUfBxu5oyf5_300000 #85 '.debug_macinfo'
+      2  0x00000121    2 R_ARM_ABS32              95 __ARM_grp..debug_line$stm32f10x_iwdg.h$.2_sZ0000_PUfBxu5oyf5_300000 #84 '.debug_line'
+
+
+** Section #84 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 120 bytes
+
+
+** Section #85 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 976 bytes
+
+
+** Section #86 '__ARM_grp.stm32f10x_pwr.h.2_Y71000_aec30SvWUA6_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #87 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 296 bytes
+
+
+** Section #163 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #87 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             126 __ARM_grp..debug_macinfo$stm32f10x_pwr.h$.2_Y71000_aec30SvWUA6_300000 #89 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              96 __ARM_grp..debug_line$stm32f10x_pwr.h$.2_Y71000_aec30SvWUA6_300000 #88 '.debug_line'
+
+
+** Section #88 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #89 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 1316 bytes
+
+
+** Section #90 '__ARM_grp.stm32f10x_rcc.h.2_0k5000_nuIklIGq9X3_b00000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #91 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 452 bytes
+
+
+** Section #164 '.rel.debug_info' (SHT_REL)
+    Size   : 64 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    8 relocations applied to section #91 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             127 __ARM_grp..debug_macinfo$stm32f10x_rcc.h$.2_0k5000_nuIklIGq9X3_b00000 #93 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              97 __ARM_grp..debug_line$stm32f10x_rcc.h$.2_0k5000_nuIklIGq9X3_b00000 #92 '.debug_line'
+      3  0x0000013b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x00000153    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x0000016c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x00000185    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x0000019f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #92 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #93 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 8292 bytes
+
+
+** Section #94 '__ARM_grp.stm32f10x_rtc.h.2_IS0000_uLYWVekoAm1_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #95 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 296 bytes
+
+
+** Section #165 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #95 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             128 __ARM_grp..debug_macinfo$stm32f10x_rtc.h$.2_IS0000_uLYWVekoAm1_300000 #97 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32              98 __ARM_grp..debug_line$stm32f10x_rtc.h$.2_IS0000_uLYWVekoAm1_300000 #96 '.debug_line'
+
+
+** Section #96 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #97 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 764 bytes
+
+
+** Section #98 '__ARM_grp.stm32f10x_sdio.h.2_cu5000_F6m5I8XtYL2_n00000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #99 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 808 bytes
+
+
+** Section #166 '.rel.debug_info' (SHT_REL)
+    Size   : 160 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    20 relocations applied to section #99 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011d    2 R_ARM_ABS32             129 __ARM_grp..debug_macinfo$stm32f10x_sdio.h$.2_cu5000_F6m5I8XtYL2_n00000 #101 '.debug_macinfo'
+      2  0x00000121    2 R_ARM_ABS32              99 __ARM_grp..debug_line$stm32f10x_sdio.h$.2_cu5000_F6m5I8XtYL2_n00000 #100 '.debug_line'
+      3  0x0000013a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x00000154    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x00000171    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x00000187    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x000001a9    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x000001c0    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      9  0x000001f4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     10  0x0000020b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     11  0x00000222    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     12  0x00000235    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     13  0x00000248    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     14  0x00000282    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     15  0x0000029b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     16  0x000002b7    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     17  0x000002d1    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     18  0x000002ec    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     19  0x000002ff    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #100 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 120 bytes
+
+
+** Section #101 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 8436 bytes
+
+
+** Section #102 '__ARM_grp.stm32f10x_spi.h.2_gn4000_kfXn5wBnRp6_l00000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #103 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 676 bytes
+
+
+** Section #167 '.rel.debug_info' (SHT_REL)
+    Size   : 144 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    18 relocations applied to section #103 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             130 __ARM_grp..debug_macinfo$stm32f10x_spi.h$.2_gn4000_kfXn5wBnRp6_l00000 #105 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32             100 __ARM_grp..debug_line$stm32f10x_spi.h$.2_gn4000_kfXn5wBnRp6_l00000 #104 '.debug_line'
+      3  0x00000138    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x0000014a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x00000160    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x00000172    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x00000184    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x00000195    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      9  0x000001b4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     10  0x000001ca    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     11  0x000001e5    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     12  0x00000213    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     13  0x00000229    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     14  0x00000241    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     15  0x00000259    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     16  0x00000270    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     17  0x00000282    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #104 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #105 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 6236 bytes
+
+
+** Section #106 '__ARM_grp.stm32f10x_tim.h.2_IRa000_kx5dOvQxFUe_v00000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #107 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 1024 bytes
+
+
+** Section #168 '.rel.debug_info' (SHT_REL)
+    Size   : 224 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    28 relocations applied to section #107 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011c    2 R_ARM_ABS32             131 __ARM_grp..debug_macinfo$stm32f10x_tim.h$.2_IRa000_kx5dOvQxFUe_v00000 #109 '.debug_macinfo'
+      2  0x00000120    2 R_ARM_ABS32             101 __ARM_grp..debug_line$stm32f10x_tim.h$.2_IRa000_kx5dOvQxFUe_v00000 #108 '.debug_line'
+      3  0x00000138    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x00000151    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x00000165    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x00000180    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x0000019f    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x000001d7    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      9  0x000001f0    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     10  0x0000020a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     11  0x0000021d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     12  0x00000235    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     13  0x0000024e    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     14  0x00000267    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     15  0x00000281    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     16  0x000002b4    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     17  0x000002cc    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     18  0x000002e5    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     19  0x000002fe    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     20  0x00000314    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     21  0x0000034a    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     22  0x00000361    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     23  0x00000378    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     24  0x0000038e    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     25  0x000003a1    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     26  0x000003bc    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     27  0x000003d9    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #108 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 116 bytes
+
+
+** Section #109 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 19324 bytes
+
+
+** Section #110 '__ARM_grp.stm32f10x_usart.h.2_oZ3000_tZHtUvk99n6_g00000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #111 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 596 bytes
+
+
+** Section #169 '.rel.debug_info' (SHT_REL)
+    Size   : 104 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    13 relocations applied to section #111 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011e    2 R_ARM_ABS32             132 __ARM_grp..debug_macinfo$stm32f10x_usart.h$.2_oZ3000_tZHtUvk99n6_g00000 #113 '.debug_macinfo'
+      2  0x00000122    2 R_ARM_ABS32             102 __ARM_grp..debug_line$stm32f10x_usart.h$.2_oZ3000_tZHtUvk99n6_g00000 #112 '.debug_line'
+      3  0x0000013b    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x00000155    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x0000016d    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x00000183    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      7  0x00000197    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      8  0x000001ba    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      9  0x000001ed    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     10  0x00000201    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     11  0x00000215    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+     12  0x0000022c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+
+
+** Section #112 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 120 bytes
+
+
+** Section #113 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 5444 bytes
+
+
+** Section #114 '__ARM_grp.stm32f10x_wwdg.h.2_AK0000_4nXVR5mIVf3_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #115 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 296 bytes
+
+
+** Section #170 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #115 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000011d    2 R_ARM_ABS32             133 __ARM_grp..debug_macinfo$stm32f10x_wwdg.h$.2_AK0000_4nXVR5mIVf3_300000 #117 '.debug_macinfo'
+      2  0x00000121    2 R_ARM_ABS32             103 __ARM_grp..debug_line$stm32f10x_wwdg.h$.2_AK0000_4nXVR5mIVf3_300000 #116 '.debug_line'
+
+
+** Section #116 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 120 bytes
+
+
+** Section #117 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 500 bytes
+
+
+** Section #118 '__ARM_grp.misc.h.2_EuP000_9z2p8j_TAk2_r20000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #119 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 448 bytes
+
+
+** Section #171 '.rel.debug_info' (SHT_REL)
+    Size   : 56 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    7 relocations applied to section #119 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x00000113    2 R_ARM_ABS32             108 __ARM_grp..debug_macinfo$misc.h$.2_EuP000_9z2p8j_TAk2_r20000 #121 '.debug_macinfo'
+      2  0x00000117    2 R_ARM_ABS32              78 __ARM_grp..debug_line$misc.h$.2_EuP000_9z2p8j_TAk2_r20000 #120 '.debug_line'
+      3  0x00000131    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      4  0x0000015c    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      5  0x00000180    2 R_ARM_ABS32              19 __ARM_grp..debug_info$stdint.h$.2_QF1000_hBN_enPLIk3_300000 #13 '.debug_info'
+      6  0x0000019c    2 R_ARM_ABS32              20 __ARM_grp..debug_info$stm32f10x.h$.2_c$x100_LoH0uPoy3R6_k20000 #27 '.debug_info'
+
+
+** Section #120 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 108 bytes
+
+
+** Section #121 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 1244 bytes
+
+
+** Section #122 '__ARM_grp.stm32f10x_conf.h.2_kM0000_oDPffZNXpoe_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #123 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 280 bytes
+
+
+** Section #172 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #123 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000010e    2 R_ARM_ABS32             115 __ARM_grp..debug_macinfo$stm32f10x_conf.h$.2_kM0000_oDPffZNXpoe_300000 #125 '.debug_macinfo'
+      2  0x00000112    2 R_ARM_ABS32              85 __ARM_grp..debug_line$stm32f10x_conf.h$.2_kM0000_oDPffZNXpoe_300000 #124 '.debug_line'
+
+
+** Section #124 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 532 bytes
+
+
+** Section #125 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 152 bytes
+
+
+** Section #126 '__ARM_grp.bsp_led.h.2_sU0000_Ool7WkDZQ0b_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #127 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 280 bytes
+
+
+** Section #173 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #127 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000010b    2 R_ARM_ABS32             106 __ARM_grp..debug_macinfo$bsp_led.h$.2_sU0000_Ool7WkDZQ0b_300000 #129 '.debug_macinfo'
+      2  0x0000010f    2 R_ARM_ABS32              76 __ARM_grp..debug_line$bsp_led.h$.2_sU0000_Ool7WkDZQ0b_300000 #128 '.debug_line'
+
+
+** Section #128 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 100 bytes
+
+
+** Section #129 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 844 bytes
+
+
+** Section #130 '__ARM_grp.bsp_led.c.2_cu0000_PACf__UrQC1_300000' (SHT_GROUP)
+    Size   : 16 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #131 '.debug_info' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 280 bytes
+
+
+** Section #174 '.rel.debug_info' (SHT_REL)
+    Size   : 24 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+    3 relocations applied to section #131 '.debug_info'
+
+    #      Offset    Relocation Type               Wrt Symbol                   Defined in
+    ========================================================================
+
+      0  0x00000006    2 R_ARM_ABS32              14 __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000 #135 '.debug_abbrev'
+      1  0x0000010b    2 R_ARM_ABS32             105 __ARM_grp..debug_macinfo$bsp_led.c$.2_cu0000_PACf__UrQC1_300000 #133 '.debug_macinfo'
+      2  0x0000010f    2 R_ARM_ABS32              75 __ARM_grp..debug_line$bsp_led.c$.2_cu0000_PACf__UrQC1_300000 #132 '.debug_line'
+
+
+** Section #132 '.debug_line' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 92 bytes
+
+
+** Section #133 '.debug_macinfo' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 12 bytes
+
+
+** Section #134 '__ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000' (SHT_GROUP)
+    Size   : 8 bytes (alignment 4)
+    Symbol table #136 '.symtab'
+
+
+** Section #135 '.debug_abbrev' (SHT_PROGBITS) [SHF_GROUP]
+    Size   : 1444 bytes
+
+
+** Section #136 '.symtab' (SHT_SYMTAB)
+    Size   : 2272 bytes (alignment 4)
+    String table #176 '.strtab'
+    Last local symbol no. 13
+
+
+** Section #175 '.shstrtab' (SHT_STRTAB)
+    Size   : 1857 bytes
+
+
+** Section #176 '.strtab' (SHT_STRTAB)
+    Size   : 8315 bytes
+
+
+** Section #177 '.ARM.attributes' (SHT_ARM_ATTRIBUTES)
+    Size   : 72 bytes
+
+

@@ -1,0 +1,307 @@
+
+========================================================================
+
+** ELF Header Information
+
+    File Name: Á÷Ë®µÆ.axf
+
+    Machine class: ELFCLASS32 (32-bit)
+    Data encoding: ELFDATA2LSB (Little endian)
+    Header version: EV_CURRENT (Current version)
+    Operating System ABI: none
+    ABI Version: 0
+    File Type: ET_EXEC (Executable) (2)
+    Machine: EM_ARM (ARM)
+
+    Image Entry point: 0x08000131
+    Flags: EF_ARM_HASENTRY + EF_ARM_ABI_FLOAT_SOFT (0x05000202)
+
+    ARM ELF revision: 5 (ABI version 2)
+
+    Conforms to Soft float procedure-call standard
+
+    Built with
+    Component: ARM Compiler 5.06 (build 20) Tool: armasm [4d35a2]
+    Component: ARM Compiler 5.06 (build 20) Tool: armlink [4d35a3]
+
+    Header size: 52 bytes (0x34)
+    Program header entry size: 32 bytes (0x20)
+    Section header entry size: 40 bytes (0x28)
+
+    Program header entries: 1
+    Section header entries: 15
+
+    Program header offset: 259708 (0x0003f67c)
+    Section header offset: 259740 (0x0003f69c)
+
+    Section header string table index: 14
+
+========================================================================
+
+** Program header #0 (PT_LOAD) [PF_X + PF_W + PF_R + PF_ARM_ENTRY]
+    Size : 2284 bytes (1260 bytes in file)
+    Virtual address: 0x08000000 (Alignment 8)
+
+
+========================================================================
+
+** Section #1 'ER_IROM1' (SHT_PROGBITS) [SHF_ALLOC + SHF_EXECINSTR]
+    Size   : 1260 bytes (alignment 4)
+    Address: 0x08000000
+
+
+** Section #2 'RW_IRAM1' (SHT_NOBITS) [SHF_ALLOC + SHF_WRITE]
+    Size   : 1024 bytes (alignment 8)
+    Address: 0x20000000
+
+
+** Section #3 '.debug_abbrev' (SHT_PROGBITS)
+    Size   : 1476 bytes
+
+
+** Section #4 '.debug_frame' (SHT_PROGBITS)
+    Size   : 1004 bytes
+
+
+** Section #5 '.debug_info' (SHT_PROGBITS)
+    Size   : 18640 bytes
+
+
+** Section #6 '.debug_line' (SHT_PROGBITS)
+    Size   : 2900 bytes
+
+
+** Section #7 '.debug_loc' (SHT_PROGBITS)
+    Size   : 676 bytes
+
+
+** Section #8 '.debug_macinfo' (SHT_PROGBITS)
+    Size   : 204048 bytes
+
+
+** Section #9 '.debug_pubnames' (SHT_PROGBITS)
+    Size   : 580 bytes
+
+
+** Section #10 '.symtab' (SHT_SYMTAB)
+    Size   : 3232 bytes (alignment 4)
+    String table #11 '.strtab'
+    Last local symbol no. 102
+
+
+** Section #11 '.strtab' (SHT_STRTAB)
+    Size   : 3816 bytes
+
+            #  Offset String
+        ====================================
+
+            1      1: $d.realdata
+            2     13: $t
+            3     16: $d
+            4     19: ..\..\Libraries\CMSIS\startup\startup_stm32f10x_hd.s
+            5     72: STACK
+            6     78: RESET
+            7     84: .text
+            8     90: ..\\..\\Libraries\\CMSIS\\core_cm3.c
+            9    127: ..\..\Libraries\CMSIS\core_cm3.c
+           10    160: ..\..\Libraries\CMSIS\system_stm32f10x.c
+           11    201: i.SetSysClock
+           12    215: SetSysClock
+           13    227: i.SetSysClockTo72
+           14    245: SetSysClockTo72
+           15    261: i.SystemInit
+           16    274: ..\..\Libraries\FWlib\src\misc.c
+           17    307: ..\..\Libraries\FWlib\src\stm32f10x_adc.c
+           18    349: ..\..\Libraries\FWlib\src\stm32f10x_bkp.c
+           19    391: ..\..\Libraries\FWlib\src\stm32f10x_can.c
+           20    433: ..\..\Libraries\FWlib\src\stm32f10x_cec.c
+           21    475: ..\..\Libraries\FWlib\src\stm32f10x_crc.c
+           22    517: ..\..\Libraries\FWlib\src\stm32f10x_dac.c
+           23    559: ..\..\Libraries\FWlib\src\stm32f10x_dbgmcu.c
+           24    604: ..\..\Libraries\FWlib\src\stm32f10x_dma.c
+           25    646: ..\..\Libraries\FWlib\src\stm32f10x_exti.c
+           26    689: ..\..\Libraries\FWlib\src\stm32f10x_flash.c
+           27    733: ..\..\Libraries\FWlib\src\stm32f10x_fsmc.c
+           28    776: ..\..\Libraries\FWlib\src\stm32f10x_gpio.c
+           29    819: i.GPIO_Init
+           30    831: i.GPIO_SetBits
+           31    846: ..\..\Libraries\FWlib\src\stm32f10x_i2c.c
+           32    888: ..\..\Libraries\FWlib\src\stm32f10x_iwdg.c
+           33    931: ..\..\Libraries\FWlib\src\stm32f10x_pwr.c
+           34    973: ..\..\Libraries\FWlib\src\stm32f10x_rcc.c
+           35   1015: i.RCC_APB2PeriphClockCmd
+           36   1040: ..\..\Libraries\FWlib\src\stm32f10x_rtc.c
+           37   1082: ..\..\Libraries\FWlib\src\stm32f10x_sdio.c
+           38   1125: ..\..\Libraries\FWlib\src\stm32f10x_spi.c
+           39   1167: ..\..\Libraries\FWlib\src\stm32f10x_tim.c
+           40   1209: ..\..\Libraries\FWlib\src\stm32f10x_usart.c
+           41   1253: ..\..\Libraries\FWlib\src\stm32f10x_wwdg.c
+           42   1296: ..\..\User\main.c
+           43   1314: i.Delay
+           44   1322: i.main
+           45   1329: ..\..\User\stm32f10x_it.c
+           46   1355: i.BusFault_Handler
+           47   1374: i.DebugMon_Handler
+           48   1393: i.HardFault_Handler
+           49   1413: i.MemManage_Handler
+           50   1433: i.NMI_Handler
+           51   1447: i.PendSV_Handler
+           52   1464: i.SVC_Handler
+           53   1478: i.SysTick_Handler
+           54   1496: i.UsageFault_Handler
+           55   1517: ..\..\User\Led\bsp_led.c
+           56   1542: i.LED_GPIO_Config
+           57   1560: ../clib/microlib/init/entry.s
+           58   1590: .ARM.Collect$$$$00000000
+           59   1615: dc.s
+           60   1620: .ARM.Collect$$$$00000001
+           61   1645: .ARM.Collect$$$$00002712
+           62   1670: __lit__00000000
+           63   1686: .ARM.Collect$$$$00000004
+           64   1711: .ARM.Collect$$$$00000008
+           65   1736: .ARM.Collect$$$$0000000A
+           66   1761: .ARM.Collect$$$$0000000B
+           67   1786: .ARM.Collect$$$$0000000D
+           68   1811: .ARM.Collect$$$$0000000F
+           69   1836: init.s
+           70   1843: handlers.s
+           71   1854: i.__scatterload_copy
+           72   1875: i.__scatterload_null
+           73   1896: i.__scatterload_zeroinit
+           74   1921: BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$EBA8$MICROLIB$REQ8$PRES8$EABIv2
+           75   2068: __ARM_use_no_argv
+           76   2086: __Vectors_Size
+           77   2101: __Vectors
+           78   2111: __Vectors_End
+           79   2125: __main
+           80   2132: _main_stk
+           81   2142: _main_scatterload
+           82   2160: __main_after_scatterload
+           83   2185: _main_clock
+           84   2197: _main_cpp_init
+           85   2212: _main_init
+           86   2223: __rt_final_cpp
+           87   2238: __rt_final_exit
+           88   2254: Reset_Handler
+           89   2268: ADC1_2_IRQHandler
+           90   2286: ADC3_IRQHandler
+           91   2302: CAN1_RX1_IRQHandler
+           92   2322: CAN1_SCE_IRQHandler
+           93   2342: DMA1_Channel1_IRQHandler
+           94   2367: DMA1_Channel2_IRQHandler
+           95   2392: DMA1_Channel3_IRQHandler
+           96   2417: DMA1_Channel4_IRQHandler
+           97   2442: DMA1_Channel5_IRQHandler
+           98   2467: DMA1_Channel6_IRQHandler
+           99   2492: DMA1_Channel7_IRQHandler
+          100   2517: DMA2_Channel1_IRQHandler
+          101   2542: DMA2_Channel2_IRQHandler
+          102   2567: DMA2_Channel3_IRQHandler
+          103   2592: DMA2_Channel4_5_IRQHandler
+          104   2619: EXTI0_IRQHandler
+          105   2636: EXTI15_10_IRQHandler
+          106   2657: EXTI1_IRQHandler
+          107   2674: EXTI2_IRQHandler
+          108   2691: EXTI3_IRQHandler
+          109   2708: EXTI4_IRQHandler
+          110   2725: EXTI9_5_IRQHandler
+          111   2744: FLASH_IRQHandler
+          112   2761: FSMC_IRQHandler
+          113   2777: I2C1_ER_IRQHandler
+          114   2796: I2C1_EV_IRQHandler
+          115   2815: I2C2_ER_IRQHandler
+          116   2834: I2C2_EV_IRQHandler
+          117   2853: PVD_IRQHandler
+          118   2868: RCC_IRQHandler
+          119   2883: RTCAlarm_IRQHandler
+          120   2903: RTC_IRQHandler
+          121   2918: SDIO_IRQHandler
+          122   2934: SPI1_IRQHandler
+          123   2950: SPI2_IRQHandler
+          124   2966: SPI3_IRQHandler
+          125   2982: TAMPER_IRQHandler
+          126   3000: TIM1_BRK_IRQHandler
+          127   3020: TIM1_CC_IRQHandler
+          128   3039: TIM1_TRG_COM_IRQHandler
+          129   3063: TIM1_UP_IRQHandler
+          130   3082: TIM2_IRQHandler
+          131   3098: TIM3_IRQHandler
+          132   3114: TIM4_IRQHandler
+          133   3130: TIM5_IRQHandler
+          134   3146: TIM6_IRQHandler
+          135   3162: TIM7_IRQHandler
+          136   3178: TIM8_BRK_IRQHandler
+          137   3198: TIM8_CC_IRQHandler
+          138   3217: TIM8_TRG_COM_IRQHandler
+          139   3241: TIM8_UP_IRQHandler
+          140   3260: UART4_IRQHandler
+          141   3277: UART5_IRQHandler
+          142   3294: USART1_IRQHandler
+          143   3312: USART2_IRQHandler
+          144   3330: USART3_IRQHandler
+          145   3348: USBWakeUp_IRQHandler
+          146   3369: USB_HP_CAN1_TX_IRQHandler
+          147   3395: USB_LP_CAN1_RX0_IRQHandler
+          148   3422: WWDG_IRQHandler
+          149   3438: __scatterload
+          150   3452: __scatterload_rt2
+          151   3470: BusFault_Handler
+          152   3487: DebugMon_Handler
+          153   3504: Delay
+          154   3510: GPIO_Init
+          155   3520: GPIO_SetBits
+          156   3533: HardFault_Handler
+          157   3551: LED_GPIO_Config
+          158   3567: MemManage_Handler
+          159   3585: NMI_Handler
+          160   3597: PendSV_Handler
+          161   3612: RCC_APB2PeriphClockCmd
+          162   3635: SVC_Handler
+          163   3647: SysTick_Handler
+          164   3663: SystemInit
+          165   3674: UsageFault_Handler
+          166   3693: __scatterload_copy
+          167   3712: __scatterload_null
+          168   3731: __scatterload_zeroinit
+          169   3754: main
+          170   3759: Region$$Table$$Base
+          171   3779: Region$$Table$$Limit
+          172   3800: __initial_sp
+          173   3813: 
+          174   3814: 
+          175   3815: 
+
+
+** Section #12 '.note' (SHT_NOTE)
+    Size   : 24 bytes (alignment 4)
+
+
+** Section #13 '.comment' (SHT_PROGBITS)
+    Size   : 21844 bytes
+
+
+** Section #14 '.shstrtab' (SHT_STRTAB)
+    Size   : 156 bytes
+
+            #  Offset String
+        ====================================
+
+            1      1: ER_IROM1
+            2     10: RW_IRAM1
+            3     19: .debug_abbrev
+            4     33: .debug_frame
+            5     46: .debug_info
+            6     58: .debug_line
+            7     70: .debug_loc
+            8     81: .debug_macinfo
+            9     96: .debug_pubnames
+           10    112: .symtab
+           11    120: .strtab
+           12    128: .note
+           13    134: .comment
+           14    143: .shstrtab
+           15    153: 
+           16    154: 
+           17    155: 
+
+

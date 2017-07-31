@@ -171,9 +171,12 @@ typedef struct
 {
   SD_CSD SD_csd;
   SD_CID SD_cid;
-  uint32_t CardCapacity;  /*!< Card Capacity */
+  uint64_t CardCapacity;  /*!< Card Capacity */
   uint32_t CardBlockSize; /*!< Card Block Size */
 } SD_CardInfo;
+
+
+extern SD_CardInfo SDCardInfo;	//用于存储卡的信息
 
 /**
   * @}
@@ -216,6 +219,7 @@ typedef struct
   */
 #define SD_CMD_GO_IDLE_STATE          0   /*!< CMD0 = 0x40 */
 #define SD_CMD_SEND_OP_COND           1   /*!< CMD1 = 0x41 */
+#define SD_CMD_SEND_IF_COND						8		/*!< CMD8 = 0x48 */
 #define SD_CMD_SEND_CSD               9   /*!< CMD9 = 0x49 */
 #define SD_CMD_SEND_CID               10  /*!< CMD10 = 0x4A */
 #define SD_CMD_STOP_TRANSMISSION      12  /*!< CMD12 = 0x4C */
@@ -238,9 +242,17 @@ typedef struct
 #define SD_CMD_UNTAG_ERASE_GROUP      37  /*!< CMD37 = 0x65 */
 #define SD_CMD_ERASE                  38  /*!< CMD38 = 0x66 */
 
-/**
-  * @}
-  */ 
+#define SD_CMD_READ_OCR								58 /*!< CMD58 */
+#define SD_CMD_APP_CMD								55 /*!< CMD55 返回0x01*/
+#define SD_ACMD_SD_SEND_OP_COND			41 /*!< ACMD41  返回0x00*/
+
+//SD卡的类型
+#define SD_TYPE_NOT_SD  0		//非SD卡
+#define SD_TYPE_V1       1		//V1.0的卡
+#define SD_TYPE_V2       2  //SDSC
+#define SD_TYPE_V2HC     4	 //SDHC
+
+
   
 /** @defgroup STM32_EVAL_SPI_SD_Exported_Macros
   * @{
@@ -264,10 +276,11 @@ void SD_DeInit(void);
 SD_Error SD_Init(void);
 uint8_t SD_Detect(void);
 SD_Error SD_GetCardInfo(SD_CardInfo *cardinfo);
-SD_Error SD_ReadBlock(uint8_t* pBuffer, uint32_t ReadAddr, uint16_t BlockSize);
-SD_Error SD_ReadMultiBlocks(uint8_t* pBuffer, uint32_t ReadAddr, uint16_t BlockSize, uint32_t NumberOfBlocks);
-SD_Error SD_WriteBlock(uint8_t* pBuffer, uint32_t WriteAddr, uint16_t BlockSize);
-SD_Error SD_WriteMultiBlocks(uint8_t* pBuffer, uint32_t WriteAddr, uint16_t BlockSize, uint32_t NumberOfBlocks);
+SD_Error SD_GetCardType(void);
+SD_Error SD_ReadBlock(uint8_t* pBuffer, uint64_t ReadAddr, uint16_t BlockSize);
+SD_Error SD_ReadMultiBlocks(uint8_t* pBuffer, uint64_t ReadAddr, uint16_t BlockSize, uint32_t NumberOfBlocks);
+SD_Error SD_WriteBlock(uint8_t* pBuffer, uint64_t WriteAddr, uint16_t BlockSize);
+SD_Error SD_WriteMultiBlocks(uint8_t* pBuffer, uint64_t WriteAddr, uint16_t BlockSize, uint32_t NumberOfBlocks);
 SD_Error SD_GetCSDRegister(SD_CSD* SD_csd);
 SD_Error SD_GetCIDRegister(SD_CID* SD_cid);
 

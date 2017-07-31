@@ -13,9 +13,8 @@
 #define ATA			           0     // SD卡
 #define SPI_FLASH		       1     // 预留外部SPI Flash使用
 
-#define SD_BLOCKSIZE     512 
+#define SD_BLOCKSIZE     SDCardInfo.CardBlockSize 
 
-SD_CardInfo SDCardInfo;
 
 /*-----------------------------------------------------------------------*/
 /* 获取设备状态                                                          */
@@ -51,9 +50,7 @@ DSTATUS disk_initialize (
 	switch (pdrv) {
 		case ATA:	         /* SD CARD */
 			if(SD_Init()==SD_RESPONSE_NO_ERROR)
-			{
-				
-				SD_GetCardInfo(&SDCardInfo);
+			{				
 				status &= ~STA_NOINIT;
 			}
 			else 
@@ -88,24 +85,6 @@ DRESULT disk_read (
 	
 	switch (pdrv) {
 		case ATA:	/* SD CARD */						
-		  if((DWORD)buff&3)
-			{
-				DRESULT res = RES_OK;
-				DWORD scratch[SD_BLOCKSIZE / 4];
-
-				while (count--) 
-				{
-					res = disk_read(ATA,(void *)scratch, sector++, 1);
-
-					if (res != RES_OK) 
-					{
-						break;
-					}
-					memcpy(buff, scratch, SD_BLOCKSIZE);
-					buff += SD_BLOCKSIZE;
-		    }
-		    return res;
-			}
 			
 			SD_state=SD_ReadMultiBlocks(buff,sector*SD_BLOCKSIZE,SD_BLOCKSIZE,count);
 
@@ -146,23 +125,6 @@ DRESULT disk_write (
 
 	switch (pdrv) {
 		case ATA:	/* SD CARD */  
-			if((DWORD)buff&3)
-			{
-				DRESULT res = RES_OK;
-				DWORD scratch[SD_BLOCKSIZE / 4];
-
-				while (count--) 
-				{
-					memcpy( scratch,buff,SD_BLOCKSIZE);
-					res = disk_write(ATA,(void *)scratch, sector++, 1);
-					if (res != RES_OK) 
-					{
-						break;
-					}					
-					buff += SD_BLOCKSIZE;
-		    }
-		    return res;
-			}		
 		
 			SD_state=SD_WriteMultiBlocks((uint8_t *)buff,sector*SD_BLOCKSIZE,SD_BLOCKSIZE,count);
 

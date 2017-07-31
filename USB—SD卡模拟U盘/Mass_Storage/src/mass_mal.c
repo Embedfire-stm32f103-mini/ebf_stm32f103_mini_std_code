@@ -40,7 +40,6 @@ uint32_t Mass_Memory_Size[2];
 uint32_t Mass_Block_Size[2];
 uint32_t Mass_Block_Count[2];
 __IO uint32_t Status = 0;
-SD_CardInfo SDCardInfo;	  //用于存储卡的信息
 
 //SD_CardInfo mSDCardInfo;
 

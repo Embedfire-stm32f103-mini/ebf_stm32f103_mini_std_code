@@ -42,7 +42,6 @@ __IO uint32_t Status = 0;
 //#define  sFLASH_ID              0xEF3015     //W25X16
 //#define  sFLASH_ID              0xEF4015	 //W25Q16
 #define  sFLASH_ID              0XEF4017    //W25Q64
- SD_CardInfo SDCardInfo;	  //用于存储卡的信息
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /*******************************************************************************

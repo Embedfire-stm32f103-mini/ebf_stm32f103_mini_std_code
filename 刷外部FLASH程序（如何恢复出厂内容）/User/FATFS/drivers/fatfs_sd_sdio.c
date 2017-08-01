@@ -1214,10 +1214,10 @@ DRESULT TM_FATFS_SD_SDIO_disk_ioctl(BYTE cmd, char *buff)
 	switch (cmd) 
 	{
 		case GET_SECTOR_SIZE :     // Get R/W sector size (WORD) 
-			*(WORD * )buff = 512;
+			*(WORD * )buff = SDCardInfo.CardBlockSize;
 		break;
 		case GET_BLOCK_SIZE :      // Get erase block size in unit of sector (DWORD)
-			*(DWORD * )buff = SDCardInfo.CardBlockSize;
+			*(DWORD * )buff = 1;
 		break;
 
 		case GET_SECTOR_COUNT:

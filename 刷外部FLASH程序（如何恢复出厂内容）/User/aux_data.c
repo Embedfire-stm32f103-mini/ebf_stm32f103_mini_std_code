@@ -146,13 +146,15 @@ FRESULT burn_file_sd2flash(Aux_Data_Typedef *dat,uint8_t file_num)
        
        BURN_INFO("-------------------------------------"); 
        BURN_INFO("准备烧录内容：%s",dat[i].description);
-       LED_BLUE;
+       LED1_ON;
+			 LED2_OFF;
        
        result = f_open(&fnew,dat[i].filename,FA_OPEN_EXISTING | FA_READ);
         if(result != FR_OK)
         {
             BURN_ERROR("打开文件失败！");
-            LED_RED;
+						 LED2_ON;
+						 LED1_OFF;
             return result;
         }
         
@@ -174,7 +176,8 @@ FRESULT burn_file_sd2flash(Aux_Data_Typedef *dat,uint8_t file_num)
         if(result!=FR_OK)			 //执行错误
         {
           BURN_ERROR("读取文件失败！");
-          LED_RED;
+						 LED2_ON;
+						 LED1_OFF;
           return result;
         }      
         SPI_FLASH_PageWrite(tempbuf,write_addr,256);  //拷贝数据到外部flash上    
@@ -195,7 +198,8 @@ FRESULT burn_file_sd2flash(Aux_Data_Typedef *dat,uint8_t file_num)
         if(result!=FR_OK)			 //执行错误
         {
           BURN_ERROR("读取文件失败！");
-          LED_RED;
+						 LED2_ON;
+						 LED1_OFF;
           return result;
         }      
         SPI_FLASH_BufferRead(flash_buf,write_addr,bw);  //从FLASH中读取数据
@@ -206,7 +210,8 @@ FRESULT burn_file_sd2flash(Aux_Data_Typedef *dat,uint8_t file_num)
           if(tempbuf[i] != flash_buf[i])
           {
             BURN_ERROR("数据校验失败！");
-            LED_RED;
+						 LED2_ON;
+						 LED1_OFF;
             return FR_INT_ERR;
           }
          }  
@@ -218,7 +223,8 @@ FRESULT burn_file_sd2flash(Aux_Data_Typedef *dat,uint8_t file_num)
       BURN_INFO("数据校验成功！");
       BURN_INFO("文件：%s 写入完成",dat[i].filename);
       BURN_INFO("-------------------------------------");
-      LED_BLUE;
+       LED1_ON;
+			 LED2_OFF;
 
       f_close(&fnew); 
     }
@@ -264,7 +270,8 @@ FRESULT copy_file_sd2flash(char *src_path,char *dst_path)
   if(result != FR_OK)
   {
     BURN_ERROR("FLASH文件系统挂载失败，请复位重试！");
-    LED_RED;
+						 LED2_ON;
+						 LED1_OFF;
     return result;
   } 
   
@@ -279,7 +286,8 @@ FRESULT copy_file_sd2flash(char *src_path,char *dst_path)
   if(result != FR_OK)
   {
     BURN_ERROR("复制文件到FLASH失败，错误码：%d",result);
-    LED_RED;
+						 LED2_ON;
+						 LED1_OFF;
     return result;
   }   
 
@@ -289,7 +297,8 @@ FRESULT copy_file_sd2flash(char *src_path,char *dst_path)
 
   BURN_INFO("*****************************************"); 
   BURN_INFO("所有文件均已复制成功！（文件系统部分）");
-  LED_BLUE;
+       LED1_ON;
+			 LED2_OFF;
   
   return result;
 

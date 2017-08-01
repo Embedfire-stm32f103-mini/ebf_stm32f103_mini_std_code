@@ -63,7 +63,8 @@ int main(void)
   if(res != FR_OK)
   {
     BURN_ERROR("f_mount ERROR!请给开发板插入SD卡然后重新复位开发板!");
-    LED_RED;
+						 LED2_ON;
+						 LED1_OFF;
     while(1);
   }    
     
@@ -85,7 +86,8 @@ int main(void)
     if(res == FR_OK)
     {
       printf("\r\n 所有数据已成功复制到FLASH！！！ \r\n");  
-      LED_GREEN;
+						 LED1_ON;
+						 LED2_OFF;
     }
     else
     {

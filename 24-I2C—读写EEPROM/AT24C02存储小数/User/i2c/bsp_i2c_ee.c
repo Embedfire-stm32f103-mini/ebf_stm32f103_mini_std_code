@@ -38,6 +38,8 @@ uint8_t ee_CheckDevice(uint8_t _Address)
 	ucAck = i2c_WaitAck();	/* 检测设备的ACK应答 */
 
 	i2c_Stop();			/* 发送停止信号 */
+	
+	i2c_NAck();	/*若输入的是读地址，需要产生非应答信号*/
 
 	return ucAck;
 }

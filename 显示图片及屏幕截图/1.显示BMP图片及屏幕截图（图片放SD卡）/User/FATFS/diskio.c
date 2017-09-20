@@ -86,7 +86,7 @@ DRESULT disk_read (
 	switch (pdrv) {
 		case ATA:	/* SD CARD */						
 			
-			SD_state=SD_ReadMultiBlocks(buff,sector*SD_BLOCKSIZE,SD_BLOCKSIZE,count);
+			SD_state=SD_ReadMultiBlocks(buff,(uint64_t)sector*SD_BLOCKSIZE,SD_BLOCKSIZE,count);
 
 			if(SD_state!=SD_RESPONSE_NO_ERROR)
 				status = RES_PARERR;
@@ -126,7 +126,7 @@ DRESULT disk_write (
 	switch (pdrv) {
 		case ATA:	/* SD CARD */  
 		
-			SD_state=SD_WriteMultiBlocks((uint8_t *)buff,sector*SD_BLOCKSIZE,SD_BLOCKSIZE,count);
+			SD_state=SD_WriteMultiBlocks((uint8_t *)buff,(uint64_t)sector*SD_BLOCKSIZE,SD_BLOCKSIZE,count);
 
 			if(SD_state!=SD_RESPONSE_NO_ERROR)
 				status = RES_PARERR;

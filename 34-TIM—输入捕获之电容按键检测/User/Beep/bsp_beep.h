@@ -5,9 +5,9 @@
 
 /******************** BEEP 引脚配置参数定义 **************************/
 #define    BEEP_GPIO_APBxClock_FUN     RCC_APB2PeriphClockCmd
-#define    BEEP_GPIO_CLK               RCC_APB2Periph_GPIOA
-#define    BEEP_PORT                   GPIOA
-#define    BEEP_PIN                    GPIO_Pin_8
+#define    BEEP_GPIO_CLK               RCC_APB2Periph_GPIOC
+#define    BEEP_PORT                   GPIOC
+#define    BEEP_PIN                    GPIO_Pin_1
 
 
 

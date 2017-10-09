@@ -33,11 +33,11 @@
 #define            TPAD_TIM_OCxPolarityConfig_FUN           TIM_OC2PolarityConfig
 
 // 电容按键被按下的时候门限值，需要根据不同的硬件实际测试，减小这个门限值可以提供响应速度
-#define            TPAD_GATE_VAL              70
+#define            TPAD_GATE_VAL              60
 
 // 电容按键空载的时候的最大和最小的充电时间，不同的硬件不一样，指南者稳定在76
-#define            TPAD_DEFAULT_VAL_MIN       70
-#define            TPAD_DEFAULT_VAL_MAX       80
+#define            TPAD_DEFAULT_VAL_MIN       60
+#define            TPAD_DEFAULT_VAL_MAX       100
 
 #define            TPAD_ON                     1
 #define            TPAD_OFF                    0

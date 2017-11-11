@@ -265,8 +265,6 @@ extern SD_CardInfo SDCardInfo;	//用于存储卡的信息
 /**
   * @}
   */ 
-extern uint8_t  SD_Type;	//存储卡的类型
-extern SD_CardInfo SDCardInfo;	//用于存储卡的信息
 
 /** @defgroup STM32_EVAL_SPI_SD_Exported_Functions
   * @{

@@ -160,7 +160,6 @@ static void GPIO_Configuration(void)
 SD_Error SD_Init(void)
 {
   uint32_t i = 0;
-	SD_Error status;
 
   /*!< Initialize SD_SPI */
   GPIO_Configuration(); 
@@ -174,23 +173,19 @@ SD_Error SD_Init(void)
   {
     /*!< Send dummy byte 0xFF */
     SD_WriteByte(SD_DUMMY_BYTE);
-  }
-	
-  /*------------Put SD in SPI mode--------------*/
-  /*!< SD initialized and set to SPI mode properly */
-	do
-	{
-		status = SD_GoIdleState();
-	}while(status!=SD_RESPONSE_NO_ERROR && i++ >10);
-	
-	//i次尝试仍失败
-	if(status!=SD_RESPONSE_NO_ERROR)
-		return SD_RESPONSE_FAILURE;	
+  } 
 	
 	//获取卡的类型,最多尝试10次
+	i=0;
 	do
 	{		
+		/*------------Put SD in SPI mode--------------*/
+		/*!< SD initialized and set to SPI mode properly */
+		SD_GoIdleState();
+
+		/*Get card type*/
 		SD_GetCardType();
+		
 	}while(SD_Type == SD_TYPE_NOT_SD && i++ >10);
 	
 	//不支持的卡

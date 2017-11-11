@@ -173,18 +173,20 @@ SD_Error SD_Init(void)
   {
     /*!< Send dummy byte 0xFF */
     SD_WriteByte(SD_DUMMY_BYTE);
-  }
-  /*------------Put SD in SPI mode--------------*/
-  /*!< SD initialized and set to SPI mode properly */
-  if (SD_GoIdleState() == SD_RESPONSE_FAILURE)
-	 return SD_RESPONSE_FAILURE;
+  } 
 	
 	//获取卡的类型,最多尝试10次
-	i=10;
+	i=0;
 	do
-	{
+	{		
+		/*------------Put SD in SPI mode--------------*/
+		/*!< SD initialized and set to SPI mode properly */
+		SD_GoIdleState();
+
+		/*Get card type*/
 		SD_GetCardType();
-	}while(SD_Type == SD_TYPE_NOT_SD || i-- > 0);
+		
+	}while(SD_Type == SD_TYPE_NOT_SD && i++ >10);
 	
 	//不支持的卡
 	if(SD_Type == SD_TYPE_NOT_SD)
@@ -352,7 +354,7 @@ SD_Error SD_ReadMultiBlocks(uint8_t* pBuffer, uint64_t ReadAddr, uint16_t BlockS
         pBuffer++;
       }
       /*!< Set next read address*/
-      Offset += 512;
+      Offset += BlockSize;
       /*!< get CRC bytes (not really needed by us, but required by SD) */
       SD_ReadByte();
       SD_ReadByte();
@@ -485,7 +487,7 @@ SD_Error SD_WriteMultiBlocks(uint8_t* pBuffer, uint64_t WriteAddr, uint16_t Bloc
       pBuffer++;
     }
     /*!< Set next write address */
-    Offset += 512;
+    Offset += BlockSize;
     /*!< Put CRC bytes (not really needed by us, but required by SD) */
     SD_ReadByte();
     SD_ReadByte();
@@ -904,7 +906,7 @@ SD_Error SD_GetCardType(void)
 
   
   /*!< Send CMD8 */
-  SD_SendCmd(SD_CMD_SEND_IF_COND, 0x1AA, 0xFF); 	
+  SD_SendCmd(SD_CMD_SEND_IF_COND, 0x1AA, 0x87); 	
 
   /*!< Check if response is got or a timeout is happen */
   while (( (R1_Resp = SD_ReadByte()) == 0xFF) && Count)

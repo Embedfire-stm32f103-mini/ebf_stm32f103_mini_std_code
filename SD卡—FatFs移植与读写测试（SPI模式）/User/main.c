@@ -70,7 +70,7 @@ int main(void)
 		else
 		{
 			LED_RED;
-			printf("《《格式化失败。》》\r\n");
+			printf("《《格式化失败。》》res_sd =%d\r\n",res_sd);
 			while(1);
 		}
 	}

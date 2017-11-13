@@ -904,7 +904,7 @@ SD_Error SD_GetCardType(void)
 
   
   /*!< Send CMD8 */
-  SD_SendCmd(SD_CMD_SEND_IF_COND, 0x1AA, 0xFF); 	
+  SD_SendCmd(SD_CMD_SEND_IF_COND, 0x1AA, 0x87); 	
 
   /*!< Check if response is got or a timeout is happen */
   while (( (R1_Resp = SD_ReadByte()) == 0xFF) && Count)

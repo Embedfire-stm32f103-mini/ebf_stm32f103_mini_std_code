@@ -23,7 +23,8 @@
 typedef enum {FAILED = 0, PASSED = !FAILED} TestStatus;
 
 /* Private define ------------------------------------------------------------*/
-#define SD_BLOCKSIZE     SDCardInfo.CardBlockSize /* Block Size in Bytes */
+//固定只支持blocksize大小为512的卡，兼容大于512的卡时，该卡容量会变小
+#define SD_BLOCKSIZE            512 /* Block Size in Bytes */
 
 #define NUMBER_OF_BLOCKS      10  /* For Multi Blocks operation (Read/Write) */
 #define MULTI_BUFFER_SIZE    (BLOCK_SIZE * NUMBER_OF_BLOCKS)

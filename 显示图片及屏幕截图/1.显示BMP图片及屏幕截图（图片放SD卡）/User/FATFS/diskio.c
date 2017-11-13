@@ -13,7 +13,8 @@
 #define ATA			           0     // SD卡
 #define SPI_FLASH		       1     // 预留外部SPI Flash使用
 
-#define SD_BLOCKSIZE     SDCardInfo.CardBlockSize 
+//固定只支持blocksize大小为512的卡，兼容大于512的卡时，该卡容量会变小
+#define SD_BLOCKSIZE            512 
 
 
 /*-----------------------------------------------------------------------*/

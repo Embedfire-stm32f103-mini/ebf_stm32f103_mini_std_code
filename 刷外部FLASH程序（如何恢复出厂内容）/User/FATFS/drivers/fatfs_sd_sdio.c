@@ -1128,7 +1128,8 @@ uint8_t SD_ReadByte(void)
 /*-----------------------------------------------------------------------------*/
 
 
-#define BLOCK_SIZE            SDCardInfo.CardBlockSize
+//固定只支持blocksize大小为512的卡，兼容大于512的卡时，该卡容量会变小
+#define BLOCK_SIZE            512
 static volatile DSTATUS TM_FATFS_SD_SDIO_Stat = STA_NOINIT;	/* Physical drive status */
 
 

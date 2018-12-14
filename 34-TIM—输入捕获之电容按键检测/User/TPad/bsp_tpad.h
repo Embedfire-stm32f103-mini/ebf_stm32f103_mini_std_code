@@ -37,7 +37,7 @@
 
 // 电容按键空载的时候的最大和最小的充电时间，不同的硬件不一样，指南者稳定在76
 #define            TPAD_DEFAULT_VAL_MIN       60
-#define            TPAD_DEFAULT_VAL_MAX       100
+#define            TPAD_DEFAULT_VAL_MAX       150
 
 #define            TPAD_ON                     1
 #define            TPAD_OFF                    0

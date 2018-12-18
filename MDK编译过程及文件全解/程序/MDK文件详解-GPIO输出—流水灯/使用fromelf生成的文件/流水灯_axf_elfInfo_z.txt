@@ -1,0 +1,9 @@
+
+========================================================================
+
+** Object/Image Component Sizes
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+       940         72        320          0       1024     229324   流水灯.axf
+       940         72        320          0          0          0   ROM Totals for 流水灯.axf

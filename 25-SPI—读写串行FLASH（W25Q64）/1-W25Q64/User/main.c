@@ -76,6 +76,7 @@ int main(void)
 	if (FlashID == sFLASH_ID)
 	{	
 		printf("\r\n 检测到串行flash W25Q64 !\r\n");
+    SPI_FLASH_BulkErase();
 		
 		/* 擦除将要写入的 SPI FLASH 扇区，FLASH写入前要先擦除 */
 		// 这里擦除4K，即一个扇区，擦除的最小单位是扇区

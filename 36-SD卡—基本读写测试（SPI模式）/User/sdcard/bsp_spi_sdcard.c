@@ -366,6 +366,9 @@ SD_Error SD_ReadMultiBlocks(uint8_t* pBuffer, uint64_t ReadAddr, uint16_t BlockS
       /*!< Set response value to failure */
       rvalue = SD_RESPONSE_FAILURE;
     }
+    
+    /* Ìí¼Ó Send dummy byte ·ÀÖ¹¶Á²Ù×÷Ê§°Ü */
+    SD_WriteByte(SD_DUMMY_BYTE);
   }
   /*!< SD chip select high */
   SD_CS_HIGH();

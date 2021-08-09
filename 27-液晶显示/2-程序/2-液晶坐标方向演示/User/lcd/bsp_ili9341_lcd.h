@@ -99,10 +99,15 @@ extern uint8_t LCD_SCAN_MODE;
 #define      CMD_SetPixel		 		          0x2C	     //Ìî³äÏñËØ
 
 
+/* ¶¨Òå LCD Çý¶¯Ð¾Æ¬ ID */
+#define     LCDID_UNKNOWN             0
+#define     LCDID_ILI9341             0x9341
+#define     LCDID_ST7789V             0x8552
 
 
 /********************************** ÉùÃ÷ ILI934 º¯Êý ***************************************/
 void                     ILI9341_Init                    ( void );
+uint16_t 								 ILI9341_ReadID									 ( void );
 void                     ILI9341_Rst                     ( void );
 void                     ILI9341_BackLed_Control         ( FunctionalState enumState );
 void                     ILI9341_GramScan                ( uint8_t ucOtion );
@@ -125,7 +130,6 @@ void 											LCD_SetBackColor								(uint16_t Color);
 void 											LCD_SetTextColor								(uint16_t Color)	;
 void 											LCD_SetColors										(uint16_t TextColor, uint16_t BackColor);
 void 											LCD_GetColors										(uint16_t *TextColor, uint16_t *BackColor);
-uint16_t 								ILI9341_Read_ID									(void);
 
 
 #endif /* __BSP_ILI9341_ILI9341_H */

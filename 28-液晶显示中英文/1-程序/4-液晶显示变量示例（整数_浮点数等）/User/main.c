@@ -27,6 +27,7 @@ static void Delay ( __IO uint32_t nCount );
 
 void Printf_Charater(void)   ;
 
+extern uint16_t lcdid;
 
 int main(void)
 {	
@@ -42,7 +43,14 @@ int main(void)
  //其中0、3、5、6 模式适合从左至右显示文字，
  //不推荐使用其它模式显示文字	其它模式显示文字会有镜像效果			
  //其中 6 模式为大部分液晶例程的默认显示方向  
-  ILI9341_GramScan ( 6 );
+  if(lcdid == LCDID_ILI9341)
+  {
+    ILI9341_GramScan ( 6 );
+  }
+  else if(lcdid == LCDID_ST7789V)
+  {
+    ILI9341_GramScan ( 0 );
+  }
 	
 	Printf_Charater();
 	

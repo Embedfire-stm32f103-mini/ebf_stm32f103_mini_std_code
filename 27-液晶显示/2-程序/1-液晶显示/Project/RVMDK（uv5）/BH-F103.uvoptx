@@ -10,7 +10,7 @@
     <aExt>*.s*; *.src; *.a*</aExt>
     <oExt>*.obj</oExt>
     <lExt>*.lib</lExt>
-    <tExt>*.txt; *.h; *.inc</tExt>
+    <tExt>*.txt; *.h; *.inc; *.md</tExt>
     <pExt>*.plm</pExt>
     <CppX>*.cpp</CppX>
     <nMigrate>0</nMigrate>
@@ -164,6 +164,22 @@
           <Filename>G:\GIT_OSC\STM32_develop\F103-ISO渚嬬▼\鍥轰欢搴撲緥绋?28-娑叉櫠鏄剧ず鑻辨枃锛堝瓧搴撳湪鍐呴儴FLASH锛?2-绋嬪簭\Project\User\Lcd\bsp_ili9341_lcd.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Template\../../User/Lcd/bsp_ili9341_lcd.c\917</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>1108</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\..\User\Lcd\bsp_ili9341_lcd.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>

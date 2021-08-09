@@ -24,6 +24,7 @@ static void LCD_Test(void);
 static void Delay ( __IO uint32_t nCount );
 void Printf_Charater(void)   ;
 
+extern uint16_t lcdid;
 
 /**
   * @brief  主函数
@@ -43,7 +44,14 @@ int main ( void )
  //其中0、3、5、6 模式适合从左至右显示文字，
  //不推荐使用其它模式显示文字	其它模式显示文字会有镜像效果			
  //其中 6 模式为大部分液晶例程的默认显示方向  
-  ILI9341_GramScan ( 6 );
+  if(lcdid == LCDID_ILI9341)
+  {
+    ILI9341_GramScan ( 6 );
+  }
+  else if(lcdid == LCDID_ST7789V)
+  {
+    ILI9341_GramScan ( 0 );
+  }
 	while ( 1 )
 	{
 		LCD_Test();
@@ -51,7 +59,6 @@ int main ( void )
 	
 	
 }
-
 
 
 
@@ -71,7 +78,14 @@ void LCD_Test(void)
 	/********显示字符串示例*******/
   ILI9341_DispStringLine_EN(LINE(0),"BH 3.2_2.8 inch LCD para:");
   ILI9341_DispStringLine_EN(LINE(1),"Image resolution:240x320 px");
-  ILI9341_DispStringLine_EN(LINE(2),"ILI9341 LCD driver");
+  if(lcdid == LCDID_ILI9341)
+  {
+    ILI9341_DispStringLine_EN(LINE(2),"ILI9341 LCD driver");
+  }
+  else if(lcdid == LCDID_ST7789V)
+  {
+    ILI9341_DispStringLine_EN(LINE(2),"ST7789V LCD driver");
+  }
   ILI9341_DispStringLine_EN(LINE(3),"XPT2046 Touch Pad driver");
   
 	/********显示变量示例*******/

@@ -25,6 +25,8 @@ static void Delay ( __IO uint32_t nCount );
 
 void Printf_Charater(void)   ;
 
+extern uint16_t lcdid;
+
 
 int main(void)
 {	
@@ -40,8 +42,15 @@ int main(void)
  //其中0、3、5、6 模式适合从左至右显示文字，
  //不推荐使用其它模式显示文字	其它模式显示文字会有镜像效果			
  //其中 6 模式为大部分液晶例程的默认显示方向  
-	ILI9341_GramScan ( 6 );
-	
+	if(lcdid == LCDID_ILI9341)
+  {
+    ILI9341_GramScan ( 6 );
+  }
+  else if(lcdid == LCDID_ST7789V)
+  {
+    ILI9341_GramScan ( 0 );
+  }
+  
 	Printf_Charater();
 	
 	while ( 1 )
@@ -70,7 +79,14 @@ void LCD_Test(void)
 	/********显示字符串示例*******/ 
   ILI9341_DispStringLine_EN_CH(LINE(0),"野火3.2_2.8寸LCD参数：");
   ILI9341_DispStringLine_EN_CH(LINE(1),"分辨率：240x320 px");
-  ILI9341_DispStringLine_EN_CH(LINE(2),"ILI9341液晶驱动");
+  if(lcdid == LCDID_ILI9341)
+  {
+    ILI9341_DispStringLine_EN_CH(LINE(2),"ILI9341液晶驱动");
+  }
+  else if(lcdid == LCDID_ST7789V)
+  {
+    ILI9341_DispStringLine_EN_CH(LINE(2),"ST7789V液晶驱动");
+  }
   ILI9341_DispStringLine_EN_CH(LINE(3),"XPT2046触摸屏驱动");
 
 	/********显示变量示例*******/

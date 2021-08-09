@@ -28,6 +28,8 @@
 FATFS fs;													/* FatFs文件系统对象 */
 FRESULT res_sd;                /* 文件操作结果 */
 
+extern uint16_t lcdid;
+
 /**
   * @brief  主函数
   * @param  无  
@@ -58,7 +60,14 @@ int main ( void )
 		printf("\r\n请给开发板插入已格式化成fat格式的SD卡。\r\n");
 	}
 	
-	ILI9341_GramScan ( 6 );
+  if(lcdid == LCDID_ILI9341)
+  {
+    ILI9341_GramScan ( 6 );
+  }
+  else if(lcdid == LCDID_ST7789V)
+  {
+    ILI9341_GramScan ( 0 );
+  }
 	/*显示SD卡内的BMP文件，请确保SD卡该路径下有该文件，
 	可在工程目录下的“需要拷贝到SD卡”的文件夹中复制到SD卡的该目录*/
 	LCD_Show_BMP(0,0,"0:wildfire_1.bmp");  

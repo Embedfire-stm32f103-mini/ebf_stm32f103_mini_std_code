@@ -25,7 +25,7 @@
 #include <string.h>
 
 
-
+extern uint16_t lcdid;
 
 int main(void)
 {		
@@ -35,7 +35,14 @@ int main(void)
 	//触摸屏初始化
 	XPT2046_Init();
 	//从FLASH里获取校正参数，若FLASH无参数，则使用模式3进行校正
-	Calibrate_or_Get_TouchParaWithFlash(3,0);
+  if(lcdid == LCDID_ILI9341)
+  {
+    Calibrate_or_Get_TouchParaWithFlash(3,0); //如果触摸不对，需要强制重新校准，把第二个参数0改成1即可
+  }
+  else if(lcdid == LCDID_ST7789V)
+  {
+    Calibrate_or_Get_TouchParaWithFlash(5,0); //如果触摸不对，需要强制重新校准，把第二个参数0改成1即可
+  }
 
 	/* USART config */
 	USART_Config();  
@@ -47,7 +54,14 @@ int main(void)
 	//其中0、3、5、6 模式适合从左至右显示文字，
 	//不推荐使用其它模式显示文字	其它模式显示文字会有镜像效果			
 	//其中 6 模式为大部分液晶例程的默认显示方向  
-  ILI9341_GramScan ( 3 );	
+  if(lcdid == LCDID_ILI9341)
+  {
+    ILI9341_GramScan ( 3 );
+  }
+  else if(lcdid == LCDID_ST7789V)
+  {
+    ILI9341_GramScan ( 5 );
+  }
 	
 	//绘制触摸画板界面
 	Palette_Init(LCD_SCAN_MODE);
